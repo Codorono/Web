@@ -1,0 +1,22 @@
+﻿body {
+  font-family: Calibri, Arial, sans-serif;
+}
+
+.url-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+}
+
+.url-row>div {
+  margin-left: 1em;
+}
+
+hr {
+  width: 80%;
+  height: 8px;
+  color: red;
+  background-color: red;
+}
