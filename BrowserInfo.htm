@@ -7,57 +7,74 @@
 <body>
     <table border="1" align="center" cellpadding="3" cellspacing="0">
         <tr>
-            <th colspan="2">
+            <th colspan="3">
                 Navigator Properties
             </th>
         </tr>
         <script type="text/javascript">
             for (prop in navigator) {
-                if (typeof navigator[prop] !== 'function') {
-                    document.write("<tr><td>" + prop + "</td><td>" + navigator[prop] + "&#160;</td></tr>");
+                document.write("<tr>");
+                document.write("<td>" + prop + "</td>");
+                document.write("<td>" + typeof navigator[prop] + "</td>");
+                if (typeof navigator[prop] === 'function') {
+                    document.write("<td></td>");
+                } else {
+                    document.write("<td>" + navigator[prop] + "</td>");
                 }
+                document.write("</tr>");
             }
-            document.write("<tr><td>javaEnabled</td><td>" + navigator.javaEnabled() + "&#160;</td></tr>");
-            document.write("<tr><td>taintEnabled</td><td>" + navigator.taintEnabled() + "&#160;</td></tr>");
+            document.write("<tr><td>javaEnabled</td><td></td><td>" + navigator.javaEnabled() + "</td></tr>");
         </script>
         <tr>
-            <th colspan="2">
+            <th colspan="3">
                 Window Properties
             </th>
         </tr>
         <script type="text/javascript">
             for (prop in window) {
-                if (typeof window[prop] !== 'function') {
-                    document.write("<tr><td>" + prop + "</td><td>" + window[prop] + "&#160;</td></tr>");
+                document.write("<tr>");
+                document.write("<td>" + prop + "</td>");
+                document.write("<td>" + typeof window[prop] + "</td>");
+                if (typeof window[prop] === 'function') {
+                    document.write("<td></td>");
+                } else {
+                    document.write("<td>" + window[prop] + "</td>");
                 }
+                document.write("</tr>");
             }
         </script>
         <tr>
-            <th colspan="2">
+            <th colspan="3">
                 Document Properties
             </th>
         </tr>
         <script type="text/javascript">
             for (prop in document) {
-                if (typeof document[prop] !== 'function') {
-                    document.write("<tr><td>" + prop + "</td><td>" + document[prop] + "&#160;</td></tr>");
+                document.write("<tr>");
+                document.write("<td>" + prop + "</td>");
+                document.write("<td>" + typeof document[prop] + "</td>");
+                if (typeof document[prop] === 'function') {
+                    document.write("<td></td>");
+                } else {
+                    document.write("<td>" + document[prop] + "</td>");
                 }
+                document.write("</tr>");
             }
         </script>
         <tr>
-            <th colspan="2">
+            <th colspan="3">
                 Document Location Properties
             </th>
         </tr>
         <script type="text/javascript">
-            document.write("<tr><td>hash</td><td>" + document.location.hash + "&#160;</td></tr>");
-            document.write("<tr><td>host</td><td>" + document.location.host + "&#160;</td></tr>");
-            document.write("<tr><td>hostname</td><td>" + document.location.hostname + "&#160;</td></tr>");
-            document.write("<tr><td>href</td><td>" + document.location.href + "&#160;</td></tr>");
-            document.write("<tr><td>pathname</td><td>" + document.location.pathname + "&#160;</td></tr>");
-            document.write("<tr><td>port</td><td>" + document.location.port + "&#160;</td></tr>");
-            document.write("<tr><td>protocol</td><td>" + document.location.protocol + "&#160;</td></tr>");
-            document.write("<tr><td>search</td><td>" + document.location.search + "&#160;</td></tr>");
+            document.write("<tr><td>hash</td><td></td><td>" + document.location.hash + "</td></tr>");
+            document.write("<tr><td>host</td><td></td><td>" + document.location.host + "</td></tr>");
+            document.write("<tr><td>hostname</td><td></td><td>" + document.location.hostname + "</td></tr>");
+            document.write("<tr><td>href</td><td></td><td>" + document.location.href + "</td></tr>");
+            document.write("<tr><td>pathname</td><td></td><td>" + document.location.pathname + "</td></tr>");
+            document.write("<tr><td>port</td><td></td><td>" + document.location.port + "</td></tr>");
+            document.write("<tr><td>protocol</td><td></td><td>" + document.location.protocol + "</td></tr>");
+            document.write("<tr><td>search</td><td></td><td>" + document.location.search + "</td></tr>");
         </script>
     </table>
 </body>
