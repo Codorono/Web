@@ -3,13 +3,32 @@
     <title>Browser Info</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="stylesheet" type="text/css" href="Main.css" />
+    <style type="text/css">
+        table { border-collapse: collapse; }
+        table, td, th { border: 1px solid; padding: 2px; }
+        th { background-color: #E0E0E0; text-align: left; }
+    </style>
 </head>
 <body>
-    <table border="1" align="center" cellpadding="3" cellspacing="0">
+    <table>
         <tr>
-            <th colspan="3">
-                Navigator Properties
-            </th>
+            <th colspan="3">Window Properties</th>
+        </tr>
+        <script type="text/javascript">
+            for (prop in window) {
+                document.write("<tr>");
+                document.write("<td>" + prop + "</td>");
+                document.write("<td>" + typeof window[prop] + "</td>");
+                if (typeof window[prop] === 'function') {
+                    document.write("<td></td>");
+                } else {
+                    document.write("<td>" + window[prop] + "</td>");
+                }
+                document.write("</tr>");
+            }
+        </script>
+        <tr>
+            <th colspan="3">Navigator Properties</th>
         </tr>
         <script type="text/javascript">
             for (prop in navigator) {
@@ -26,27 +45,7 @@
             document.write("<tr><td>javaEnabled</td><td></td><td>" + navigator.javaEnabled() + "</td></tr>");
         </script>
         <tr>
-            <th colspan="3">
-                Window Properties
-            </th>
-        </tr>
-        <script type="text/javascript">
-            for (prop in window) {
-                document.write("<tr>");
-                document.write("<td>" + prop + "</td>");
-                document.write("<td>" + typeof window[prop] + "</td>");
-                if (typeof window[prop] === 'function') {
-                    document.write("<td></td>");
-                } else {
-                    document.write("<td>" + window[prop] + "</td>");
-                }
-                document.write("</tr>");
-            }
-        </script>
-        <tr>
-            <th colspan="3">
-                Document Properties
-            </th>
+            <th colspan="3">Document Properties</th>
         </tr>
         <script type="text/javascript">
             for (prop in document) {
@@ -62,9 +61,7 @@
             }
         </script>
         <tr>
-            <th colspan="3">
-                Document Location Properties
-            </th>
+            <th colspan="3">Document Location Properties</th>
         </tr>
         <script type="text/javascript">
             document.write("<tr><td>hash</td><td></td><td>" + document.location.hash + "</td></tr>");
