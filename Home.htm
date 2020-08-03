@@ -235,7 +235,7 @@
         let sunsetminute = sunsettime % 60;
         let sunsethour = ((sunsettime - sunsetminute) / 60) - 12;
 
-        document.write("Election is in " + electiondays + " days; Sunrise is at " + sunrisehour + ":" + sunriseminute + " AM; Sunset is at " + sunsethour + ":" + sunsetminute + " PM");
+        document.write(currentdatetime.toDateString() + "; Election is in " + electiondays + " days; Sunrise is at " + sunrisehour + ":" + sunriseminute + " AM; Sunset is at " + sunsethour + ":" + sunsetminute + " PM");
     </script>
     <hr />
     <div class="url-row">
