@@ -6,10 +6,7 @@
 </head>
 <body>
     <script type="text/javascript">
-        let currentdatetime = new Date()
-        let electiondatetime = new Date(2020, 10, 3);
-        let electiondays = Math.floor((electiondatetime.getTime() - currentdatetime.getTime()) / (1000 * 60 * 60 * 24));
-        const suntimes = [
+        const dailySunTimes = [
             0x03E501CC, 0x03E601CC, 0x03E701CC, 0x03E801CC, 0x03E901CC, 0x03EA01CC, 0x03EB01CC,
             0x03EC01CC, 0x03ED01CB, 0x03EF01CB, 0x03F001CB, 0x03F101CA, 0x03F201CA, 0x03F301CA,
             0x03F401C9, 0x03F601C9, 0x03F701C8, 0x03F801C7, 0x03F901C7, 0x03FB01C6, 0x03FC01C5,
@@ -221,21 +218,29 @@
             0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
         ];
 
-        let suntimesdatetime = new Date(2020, 0, 1);
-        let suntimesdays = Math.floor((currentdatetime.getTime() - suntimesdatetime.getTime()) / (1000 * 60 * 60 * 24));
+        let todayDateTime = new Date()
 
-        let todaysuntimes = suntimes[suntimesdays];
+        let electionDateTime = new Date(2020, 10, 3);
+        let electionDiffDays = Math.floor((electionDateTime.getTime() - todayDateTime.getTime()) / (1000 * 60 * 60 * 24));
+        let electionText = "Election is in " + electionDiffDays + " days"
 
-        let sunrisetime = todaysuntimes & 0x0000FFFF;
-        let sunsettime = todaysuntimes >>> 16;
+        let tableDateTime = new Date(2020, 0, 1);
+        let todayDiffDays = Math.floor((todayDateTime.getTime() - tableDateTime.getTime()) / (1000 * 60 * 60 * 24));
 
-        let sunriseminute = sunrisetime % 60;
-        let sunrisehour = (sunrisetime - sunriseminute) / 60;
+        let todaySunTimes = dailySunTimes[todayDiffDays];
 
-        let sunsetminute = sunsettime % 60;
-        let sunsethour = ((sunsettime - sunsetminute) / 60) - 12;
+        let sunriseTime = todaySunTimes & 0x0000FFFF;
+        let sunsetTime = todaySunTimes >>> 16;
 
-        document.write(currentdatetime.toDateString() + "; Election is in " + electiondays + " days; Sunrise is at " + sunrisehour + ":" + sunriseminute + " AM; Sunset is at " + sunsethour + ":" + sunsetminute + " PM");
+        let sunriseMinute = sunriseTime % 60;
+        let sunriseHour = (sunriseTime - sunriseMinute) / 60;
+        let sunriseText = sunriseHour + ":" + String(sunriseMinute).padStart(2, "0") + " AM"
+
+        let sunsetMinute = sunsetTime % 60;
+        let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
+        let sunsetText = sunsetHour + ":" + String(sunsetMinute).padStart(2, "0") + " PM"
+
+        document.write(todayDateTime.toDateString() + "; " + electionText + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText);
     </script>
     <hr />
     <div class="url-row">
