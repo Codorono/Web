@@ -218,14 +218,19 @@
             0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
         ];
 
-        let todayDateTime = new Date()
+		function plural(number) { return (number === 1) ? "" : "s" }
 
-        let electionDateTime = new Date(2020, 10, 3);
-        let electionDiffDays = Math.floor((electionDateTime.getTime() - todayDateTime.getTime()) / (1000 * 60 * 60 * 24));
-        let electionText = "Election is in " + electionDiffDays + " days"
+        const dayTicks = 24 * 60 * 60 * 1000;
 
-        let tableDateTime = new Date(2020, 0, 1);
-        let todayDiffDays = Math.floor((todayDateTime.getTime() - tableDateTime.getTime()) / (1000 * 60 * 60 * 24));
+        let nowDateTimeTicks = Date.now();
+
+		let electionDateTicks = new Date(2020, 10, 3).getTime();
+
+        let electionDiffDays = Math.ceil((electionDateTicks - nowDateTimeTicks) / dayTicks);
+        let electionText = "Election is in " + electionDiffDays + " day" + plural(electionDiffDays);
+
+        let tableDateTicks = new Date(2020, 0, 1).getTime();
+        let todayDiffDays = Math.floor((nowDateTimeTicks - tableDateTicks) / dayTicks);
 
         let todaySunTimes = dailySunTimes[todayDiffDays];
 
@@ -234,13 +239,13 @@
 
         let sunriseMinute = sunriseTime % 60;
         let sunriseHour = (sunriseTime - sunriseMinute) / 60;
-        let sunriseText = sunriseHour + ":" + String(sunriseMinute).padStart(2, "0") + " AM"
+        let sunriseText = sunriseHour + ":" + sunriseMinute.toString().padStart(2, "0") + " AM";
 
         let sunsetMinute = sunsetTime % 60;
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
-        let sunsetText = sunsetHour + ":" + String(sunsetMinute).padStart(2, "0") + " PM"
+        let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        document.write(todayDateTime.toDateString() + "; " + electionText + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText);
+        document.write(new Date().toDateString() + "; " + electionText + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText);
     </script>
     <hr />
     <div class="url-row">
