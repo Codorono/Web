@@ -218,13 +218,13 @@
             0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
         ];
 
-		function plural(number) { return (number === 1) ? "" : "s" }
+        function plural(number) { return (number === 1) ? "" : "s" }
 
         const dayTicks = 24 * 60 * 60 * 1000;
 
         let nowDateTimeTicks = Date.now();
 
-		let electionDateTicks = new Date(2020, 10, 3).getTime();
+        let electionDateTicks = new Date(2020, 10, 3).getTime();
 
         let electionDiffDays = Math.ceil((electionDateTicks - nowDateTimeTicks) / dayTicks);
         let electionText = "Election is in " + electionDiffDays + " day" + plural(electionDiffDays);
