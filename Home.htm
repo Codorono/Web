@@ -224,10 +224,10 @@
 
         let nowDateTimeTicks = Date.now();
 
-        let electionDateTicks = new Date(2020, 10, 3).getTime();
+        let christmasDateTicks = new Date(2020, 11, 25).getTime();
 
-        let electionDiffDays = Math.ceil((electionDateTicks - nowDateTimeTicks) / dayTicks);
-        let electionText = "Election is in " + electionDiffDays + " day" + plural(electionDiffDays);
+        let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
+        let christmasText = "Christmas is in " + christmasDiffDays + " day" + plural(christmasDiffDays);
 
         let tableDateTicks = new Date(2020, 0, 1).getTime();
         let todayDiffDays = Math.floor((nowDateTimeTicks - tableDateTicks) / dayTicks);
@@ -245,7 +245,7 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        document.write(new Date().toDateString() + "; " + electionText + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText);
+        document.write(new Date().toDateString() + "; " + christmasText + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText);
     </script>
     <hr />
     <div class="url-row">
