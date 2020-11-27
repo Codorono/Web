@@ -240,19 +240,19 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let thanksgivingDateTicks = new Date(2020, 10, 26).getTime();
-        let thanksgivingDiffDays = Math.ceil((thanksgivingDateTicks - nowDateTimeTicks) / dayTicks);
-        let thanksgivingText = "Thanksgiving is in " + thanksgivingDiffDays + " day" + plural(thanksgivingDiffDays);
-
         let christmasDateTicks = new Date(2020, 11, 25).getTime();
         let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
         let christmasText = "Christmas is in " + christmasDiffDays + " day" + plural(christmasDiffDays);
+
+        let newyearDateTicks = new Date(2021, 0, 1).getTime();
+        let newyearDiffDays = Math.ceil((newyearDateTicks - nowDateTimeTicks) / dayTicks);
+        let newyearText = "New Year's Day is in " + newyearDiffDays + " day" + plural(newyearDiffDays);
 
         let inaugurationDateTicks = new Date(2021, 0, 20).getTime();
         let inaugurationDiffDays = Math.ceil((inaugurationDateTicks - nowDateTimeTicks) / dayTicks);
         let inaugurationText = "Inauguration is in " + inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
 
-        document.write(new Date().toDateString() + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText + "; " + thanksgivingText + "; " + christmasText + "; " + inaugurationText);
+        document.write(new Date().toDateString() + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText + "; " + christmasText + "; " + newyearText + "; " + inaugurationText);
     </script>
     <hr />
     <div class="url-row">
