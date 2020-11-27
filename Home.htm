@@ -242,17 +242,24 @@
 
         let christmasDateTicks = new Date(2020, 11, 25).getTime();
         let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
-        let christmasText = "Christmas is in " + christmasDiffDays + " day" + plural(christmasDiffDays);
+        let christmasText = christmasDiffDays + " day" + plural(christmasDiffDays);
 
         let newyearDateTicks = new Date(2021, 0, 1).getTime();
         let newyearDiffDays = Math.ceil((newyearDateTicks - nowDateTimeTicks) / dayTicks);
-        let newyearText = "New Year's Day is in " + newyearDiffDays + " day" + plural(newyearDiffDays);
+        let newyearText = newyearDiffDays + " day" + plural(newyearDiffDays);
 
         let inaugurationDateTicks = new Date(2021, 0, 20).getTime();
         let inaugurationDiffDays = Math.ceil((inaugurationDateTicks - nowDateTimeTicks) / dayTicks);
-        let inaugurationText = "Inauguration is in " + inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
+        let inaugurationText = inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
 
-        document.write(new Date().toDateString() + "; Sunrise is at " + sunriseText + "; Sunset is at " + sunsetText + "; " + christmasText + "; " + newyearText + "; " + inaugurationText);
+        document.write("<div>");
+        document.write("<u>" + new Date().toDateString() + "</u>; ");
+        document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
+        document.write("<b>Sunset</b> is at " + sunsetText + "; ");
+        document.write("<b>Christmas</b> is in " + christmasText + "; ");
+        document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
+        document.write("<b>Inauguration</b> is in " + inaugurationText);
+        document.write("</div>");
     </script>
     <hr />
     <div class="url-row">
