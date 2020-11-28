@@ -240,6 +240,10 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
+        let electoralcollegeDateTicks = new Date(2020, 11, 14).getTime();
+        let electoralcollegeDiffDays = Math.ceil((electoralcollegeDateTicks - nowDateTimeTicks) / dayTicks);
+        let electoralcollegeText = electoralcollegeDiffDays + " day" + plural(electoralcollegeDiffDays);
+
         let christmasDateTicks = new Date(2020, 11, 25).getTime();
         let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
         let christmasText = christmasDiffDays + " day" + plural(christmasDiffDays);
@@ -256,6 +260,7 @@
         document.write("<u>" + new Date().toDateString() + "</u>; ");
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
+        document.write("<b>Electoral College</b> is in " + electoralcollegeText + "; ");
         document.write("<b>Christmas</b> is in " + christmasText + "; ");
         document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
         document.write("<b>Inauguration</b> is in " + inaugurationText);
