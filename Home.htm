@@ -252,6 +252,10 @@
         let newyearDiffDays = Math.ceil((newyearDateTicks - nowDateTimeTicks) / dayTicks);
         let newyearText = newyearDiffDays + " day" + plural(newyearDiffDays);
 
+        let georgiarunoffDateTicks = new Date(2021, 0, 5).getTime();
+        let georgiarunoffDiffDays = Math.ceil((georgiarunoffDateTicks - nowDateTimeTicks) / dayTicks);
+        let georgiarunoffText = georgiarunoffDiffDays + " day" + plural(georgiarunoffDiffDays);
+
         let inaugurationDateTicks = new Date(2021, 0, 20).getTime();
         let inaugurationDiffDays = Math.ceil((inaugurationDateTicks - nowDateTimeTicks) / dayTicks);
         let inaugurationText = inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
@@ -263,6 +267,7 @@
         document.write("<b>Electoral College</b> is in " + electoralcollegeText + "; ");
         document.write("<b>Christmas</b> is in " + christmasText + "; ");
         document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
+        document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
         document.write("<b>Inauguration</b> is in " + inaugurationText);
         document.write("</div>");
     </script>
