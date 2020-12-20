@@ -252,9 +252,25 @@
         let georgiarunoffDiffDays = Math.ceil((georgiarunoffDateTicks - nowDateTimeTicks) / dayTicks);
         let georgiarunoffText = georgiarunoffDiffDays + " day" + plural(georgiarunoffDiffDays);
 
+        let electoralcollegeDateTicks = new Date(2021, 0, 6).getTime();
+        let electoralcollegeDiffDays = Math.ceil((electoralcollegeDateTicks - nowDateTimeTicks) / dayTicks);
+        let electoralcollegeText = electoralcollegeDiffDays + " day" + plural(electoralcollegeDiffDays);
+
+        let martinlutherkingjrdayDateTicks = new Date(2021, 0, 18).getTime();
+        let martinlutherkingjrdayDiffDays = Math.ceil((martinlutherkingjrdayDateTicks - nowDateTimeTicks) / dayTicks);
+        let martinlutherkingjrdayText = martinlutherkingjrdayDiffDays + " day" + plural(martinlutherkingjrdayDiffDays);
+
         let inaugurationDateTicks = new Date(2021, 0, 20).getTime();
         let inaugurationDiffDays = Math.ceil((inaugurationDateTicks - nowDateTimeTicks) / dayTicks);
         let inaugurationText = inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
+
+        let groundhogdayDateTicks = new Date(2021, 1, 2).getTime();
+        let groundhogdayDiffDays = Math.ceil((groundhogdayDateTicks - nowDateTimeTicks) / dayTicks);
+        let groundhogdayText = groundhogdayDiffDays + " day" + plural(groundhogdayDiffDays);
+
+        let paulbirthdayDateTicks = new Date(2021, 1, 9).getTime();
+        let paulbirthdayDiffDays = Math.ceil((paulbirthdayDateTicks - nowDateTimeTicks) / dayTicks);
+        let paulbirthdayText = paulbirthdayDiffDays + " day" + plural(paulbirthdayDiffDays);
 
         document.write("<div>");
         document.write("<u>" + new Date().toDateString() + "</u>; ");
@@ -263,7 +279,11 @@
         document.write("<b>Christmas</b> is in " + christmasText + "; ");
         document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
         document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
-        document.write("<b>Inauguration</b> is in " + inaugurationText);
+        document.write("<b>Electoral College vote</b> is in " + electoralcollegeText + "; ");
+        document.write("<b>Martin Luther King Jr. Day</b> is in " + martinlutherkingjrdayText + "; ");
+        document.write("<b>Inauguration</b> is in " + inaugurationText + "; ");
+        document.write("<b>Groundhog Day</b> is in " + groundhogdayText + "; ");
+        document.write("<b>Paul's Birthday</b> is in " + paulbirthdayText);
         document.write("</div>");
     </script>
     <hr />
