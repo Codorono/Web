@@ -240,10 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let wintersolsticeDateTicks = new Date(2020, 11, 21).getTime();
-        let wintersolsticeDiffDays = Math.ceil((wintersolsticeDateTicks - nowDateTimeTicks) / dayTicks);
-        let wintersolsticeText = wintersolsticeDiffDays + " day" + plural(wintersolsticeDiffDays);
-
         let christmasDateTicks = new Date(2020, 11, 25).getTime();
         let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
         let christmasText = christmasDiffDays + " day" + plural(christmasDiffDays);
@@ -284,15 +280,18 @@
         let stpatricksdayDiffDays = Math.ceil((stpatricksdayDateTicks - nowDateTimeTicks) / dayTicks);
         let stpatricksdayText = stpatricksdayDiffDays + " day" + plural(stpatricksdayDiffDays);
 
-        let springequinoxDateTicks = new Date(2021, 2, 20).getTime();
-        let springequinoxDiffDays = Math.ceil((springequinoxDateTicks - nowDateTimeTicks) / dayTicks);
-        let springequinoxText = springequinoxDiffDays + " day" + plural(springequinoxDiffDays);
+		let springequinoxDateTicks = new Date(2021, 2, 20).getTime();
+		let springequinoxDiffDays = Math.ceil((springequinoxDateTicks - nowDateTimeTicks) / dayTicks);
+		let springequinoxText = springequinoxDiffDays + " day" + plural(springequinoxDiffDays);
+
+        let summersolsticeDateTicks = new Date(2021, 5, 20).getTime();
+        let summersolsticeDiffDays = Math.ceil((summersolsticeDateTicks - nowDateTimeTicks) / dayTicks);
+        let summersolsticeText = summersolsticeDiffDays + " day" + plural(summersolsticeDiffDays);
 
         document.write("<div>");
         document.write("<u>" + new Date().toDateString() + "</u>; ");
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
-        document.write("<b>Winter Solstice</b> is in " + wintersolsticeText + "; ");
         document.write("<b>Christmas</b> is in " + christmasText + "; ");
         document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
         document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
@@ -303,7 +302,8 @@
         document.write("<b>Paul's Birthday</b> is in " + paulbirthdayText + "; ");
         document.write("<b>Valentine's Day</b> is in " + valentinesdayText + "; ");
         document.write("<b>St. Patrick's Day</b> is in " + stpatricksdayText + "; ");
-        document.write("<b>Spring Equinox</b> is in " + springequinoxText);
+        document.write("<b>Spring Equinox</b> is in " + springequinoxText + "; ");
+		document.write("<b>Summer Solstice</b> is in " + summersolsticeText);
 
         document.write("</div>");
     </script>
