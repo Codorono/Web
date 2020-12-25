@@ -240,10 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let christmasDateTicks = new Date(2020, 11, 25).getTime();
-        let christmasDiffDays = Math.ceil((christmasDateTicks - nowDateTimeTicks) / dayTicks);
-        let christmasText = christmasDiffDays + " day" + plural(christmasDiffDays);
-
         let newyearDateTicks = new Date(2021, 0, 1).getTime();
         let newyearDiffDays = Math.ceil((newyearDateTicks - nowDateTimeTicks) / dayTicks);
         let newyearText = newyearDiffDays + " day" + plural(newyearDiffDays);
@@ -292,7 +288,7 @@
         document.write("<u>" + new Date().toDateString() + "</u>; ");
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
-        document.write("<b>Christmas</b> is in " + christmasText + "; ");
+		document.write("<br />");
         document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
         document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
         document.write("<b>Electoral College vote</b> is in " + electoralcollegeText + "; ");
@@ -304,7 +300,6 @@
         document.write("<b>St. Patrick's Day</b> is in " + stpatricksdayText + "; ");
         document.write("<b>Spring Equinox</b> is in " + springequinoxText + "; ");
 		document.write("<b>Summer Solstice</b> is in " + summersolsticeText);
-
         document.write("</div>");
     </script>
     <hr />
