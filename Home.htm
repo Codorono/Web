@@ -240,10 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let newyearDateTicks = new Date(2021, 0, 1).getTime();
-        let newyearDiffDays = Math.ceil((newyearDateTicks - nowDateTimeTicks) / dayTicks);
-        let newyearText = newyearDiffDays + " day" + plural(newyearDiffDays);
-
         let georgiarunoffDateTicks = new Date(2021, 0, 5).getTime();
         let georgiarunoffDiffDays = Math.ceil((georgiarunoffDateTicks - nowDateTimeTicks) / dayTicks);
         let georgiarunoffText = georgiarunoffDiffDays + " day" + plural(georgiarunoffDiffDays);
@@ -289,7 +285,6 @@
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
 		document.write("<br />");
-        document.write("<b>New Year's Day</b> is in " + newyearText + "; ");
         document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
         document.write("<b>Electoral College vote</b> is in " + electoralcollegeText + "; ");
         document.write("<b>Martin Luther King Jr. Day</b> is in " + martinlutherkingjrdayText + "; ");
