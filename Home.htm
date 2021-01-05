@@ -240,14 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let georgiarunoffDateTicks = new Date(2021, 0, 5).getTime();
-        let georgiarunoffDiffDays = Math.ceil((georgiarunoffDateTicks - nowDateTimeTicks) / dayTicks);
-        let georgiarunoffText = georgiarunoffDiffDays + " day" + plural(georgiarunoffDiffDays);
-
-        let electoralcollegeDateTicks = new Date(2021, 0, 6).getTime();
-        let electoralcollegeDiffDays = Math.ceil((electoralcollegeDateTicks - nowDateTimeTicks) / dayTicks);
-        let electoralcollegeText = electoralcollegeDiffDays + " day" + plural(electoralcollegeDiffDays);
-
         let martinlutherkingjrdayDateTicks = new Date(2021, 0, 18).getTime();
         let martinlutherkingjrdayDiffDays = Math.ceil((martinlutherkingjrdayDateTicks - nowDateTimeTicks) / dayTicks);
         let martinlutherkingjrdayText = martinlutherkingjrdayDiffDays + " day" + plural(martinlutherkingjrdayDiffDays);
@@ -285,8 +277,6 @@
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
 		document.write("<br />");
-        document.write("<b>Georgia runoff</b> is in " + georgiarunoffText + "; ");
-        document.write("<b>Electoral College vote</b> is in " + electoralcollegeText + "; ");
         document.write("<b>Martin Luther King Jr. Day</b> is in " + martinlutherkingjrdayText + "; ");
         document.write("<b>Inauguration</b> is in " + inaugurationText + "; ");
         document.write("<b>Groundhog Day</b> is in " + groundhogdayText + "; ");
