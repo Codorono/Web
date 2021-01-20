@@ -240,14 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let martinlutherkingjrdayDateTicks = new Date(2021, 0, 18).getTime();
-        let martinlutherkingjrdayDiffDays = Math.ceil((martinlutherkingjrdayDateTicks - nowDateTimeTicks) / dayTicks);
-        let martinlutherkingjrdayText = martinlutherkingjrdayDiffDays + " day" + plural(martinlutherkingjrdayDiffDays);
-
-        let inaugurationDateTicks = new Date(2021, 0, 20).getTime();
-        let inaugurationDiffDays = Math.ceil((inaugurationDateTicks - nowDateTimeTicks) / dayTicks);
-        let inaugurationText = inaugurationDiffDays + " day" + plural(inaugurationDiffDays);
-
         let groundhogdayDateTicks = new Date(2021, 1, 2).getTime();
         let groundhogdayDiffDays = Math.ceil((groundhogdayDateTicks - nowDateTimeTicks) / dayTicks);
         let groundhogdayText = groundhogdayDiffDays + " day" + plural(groundhogdayDiffDays);
@@ -277,8 +269,6 @@
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
 		document.write("<br />");
-        document.write("<b>Martin Luther King Jr. Day</b> is in " + martinlutherkingjrdayText + "; ");
-        document.write("<b>Inauguration</b> is in " + inaugurationText + "; ");
         document.write("<b>Groundhog Day</b> is in " + groundhogdayText + "; ");
         document.write("<b>Paul's Birthday</b> is in " + paulbirthdayText + "; ");
         document.write("<b>Valentine's Day</b> is in " + valentinesdayText + "; ");
