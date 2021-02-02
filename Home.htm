@@ -240,10 +240,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let groundhogdayDateTicks = new Date(2021, 1, 2).getTime();
-        let groundhogdayDiffDays = Math.ceil((groundhogdayDateTicks - nowDateTimeTicks) / dayTicks);
-        let groundhogdayText = groundhogdayDiffDays + " day" + plural(groundhogdayDiffDays);
-
         let paulbirthdayDateTicks = new Date(2021, 1, 9).getTime();
         let paulbirthdayDiffDays = Math.ceil((paulbirthdayDateTicks - nowDateTimeTicks) / dayTicks);
         let paulbirthdayText = paulbirthdayDiffDays + " day" + plural(paulbirthdayDiffDays);
@@ -273,7 +269,6 @@
         document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
         document.write("<b>Sunset</b> is at " + sunsetText + "; ");
         document.write("<br />");
-        document.write("<b>Groundhog Day</b> is in " + groundhogdayText + "; ");
         document.write("<b>Paul's Birthday</b> is in " + paulbirthdayText + "; ");
         document.write("<b>Valentine's Day</b> is in " + valentinesdayText + "; ");
         document.write("<b>St. Patrick's Day</b> is in " + stpatricksdayText + "; ");
