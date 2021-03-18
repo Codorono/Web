@@ -222,6 +222,10 @@
 
         const dayTicks = 24 * 60 * 60 * 1000;
 
+        document.write("<div>");
+
+        document.write("<b>Today</b> is " + new Date().toDateString() + " - ");
+
         let nowDateTimeTicks = Date.now();
 
         let tableDateTicks = new Date(2020, 0, 1).getTime();
@@ -234,37 +238,29 @@
 
         let sunriseMinute = sunriseTime % 60;
         let sunriseHour = (sunriseTime - sunriseMinute) / 60;
-        let sunriseText = sunriseHour + ":" + sunriseMinute.toString().padStart(2, "0") + " AM";
+
+        document.write("<b>Sunrise</b> is at " + sunriseHour + ":" + sunriseMinute.toString().padStart(2, "0") + " AM" + " - ");
 
         let sunsetMinute = sunsetTime % 60;
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
-        let sunsetText = sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM";
 
-        let stpatricksdayDateTicks = new Date(2021, 2, 17).getTime();
-        let stpatricksdayDiffDays = Math.ceil((stpatricksdayDateTicks - nowDateTimeTicks) / dayTicks);
-        let stpatricksdayText = stpatricksdayDiffDays + " day" + plural(stpatricksdayDiffDays);
+        document.write("<b>Sunset</b> is at " + sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM" + "<br />");
 
         let springequinoxDateTicks = new Date(2021, 2, 20).getTime();
         let springequinoxDiffDays = Math.ceil((springequinoxDateTicks - nowDateTimeTicks) / dayTicks);
-        let springequinoxText = springequinoxDiffDays + " day" + plural(springequinoxDiffDays);
+
+        document.write("<b>Spring Equinox</b> is in " + springequinoxDiffDays + " day" + plural(springequinoxDiffDays) + " - ");
 
         let easterdayDateTicks = new Date(2021, 3, 4).getTime();
         let easterdayDiffDays = Math.ceil((easterdayDateTicks - nowDateTimeTicks) / dayTicks);
-        let easterdayText = easterdayDiffDays + " day" + plural(easterdayDiffDays);
+
+        document.write("<b>Easter Day</b> is in " + easterdayDiffDays + " day" + plural(easterdayDiffDays) + " - ");
 
         let summersolsticeDateTicks = new Date(2021, 5, 20).getTime();
         let summersolsticeDiffDays = Math.ceil((summersolsticeDateTicks - nowDateTimeTicks) / dayTicks);
-        let summersolsticeText = summersolsticeDiffDays + " day" + plural(summersolsticeDiffDays);
 
-        document.write("<div>");
-        document.write("<u>" + new Date().toDateString() + "</u>; ");
-        document.write("<b>Sunrise</b> is at " + sunriseText + "; ");
-        document.write("<b>Sunset</b> is at " + sunsetText + "; ");
-        document.write("<br />");
-        document.write("<b>St. Patrick's Day</b> is in " + stpatricksdayText + "; ");
-        document.write("<b>Spring Equinox</b> is in " + springequinoxText + "; ");
-        document.write("<b>Easter Day</b> is in " + easterdayText + "; ");
-        document.write("<b>Summer Solstice</b> is in " + summersolsticeText);
+        document.write("<b>Summer Solstice</b> is in " + summersolsticeDiffDays + " day" + plural(summersolsticeDiffDays));
+
         document.write("</div>");
     </script>
     <hr />
