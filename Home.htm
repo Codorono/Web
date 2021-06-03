@@ -244,10 +244,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         document.write("<b>Sunset</b> is at " + sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM" + "<br />");
 
-		let nMemorialDayDateTicks = new Date(2021, 4, 31).getTime();
-		let nMemorialDayDiffDays = Math.ceil((nMemorialDayDateTicks - nowDateTimeTicks) / dayTicks);
-		document.write("<b>Memorial Day</b> is in " + nMemorialDayDiffDays + " day" + plural(nMemorialDayDiffDays) + " - ");
-
 		let summersolsticeDateTicks = new Date(2021, 5, 20).getTime();
 		let summersolsticeDiffDays = Math.ceil((summersolsticeDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Summer Solstice</b> is in " + summersolsticeDiffDays + " day" + plural(summersolsticeDiffDays) + " - ");
