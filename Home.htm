@@ -244,10 +244,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         document.write("<b>Sunset</b> is at " + sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM" + "<br />");
 
-        let nIndependenceDayDateTicks = new Date(2021, 6, 4).getTime();
-        let nIndependenceDayDiffDays = Math.ceil((nIndependenceDayDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>Independence Day</b> is in " + nIndependenceDayDiffDays + " day" + plural(nIndependenceDayDiffDays) + " - ");
-
 		let nLaborDayDateTicks = new Date(2021, 8, 6).getTime();
 		let nLaborDayDiffDays = Math.ceil((nLaborDayDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Labor Day</b> is in " + nLaborDayDiffDays + " day" + plural(nLaborDayDiffDays) + " - ");
