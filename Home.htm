@@ -244,10 +244,6 @@
         let sunsetHour = ((sunsetTime - sunsetMinute) / 60) - 12;
         document.write("<b>Sunset</b> is at " + sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM" + "<br />");
 
-		let nAutumnEquinoxDateTicks = new Date(2021, 8, 22).getTime();
-		let nAutumnEquinoxDiffDays = Math.ceil((nAutumnEquinoxDateTicks - nowDateTimeTicks) / dayTicks);
-		document.write("<b>Autumn Equinox</b> is in " + nAutumnEquinoxDiffDays + " day" + plural(nAutumnEquinoxDiffDays) + " - ");
-
 		let nHalloweenDateTicks = new Date(2021, 9, 31).getTime();
 		let nHalloweenDiffDays = Math.ceil((nHalloweenDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Halloween</b> is in " + nHalloweenDiffDays + " day" + plural(nHalloweenDiffDays) + " - ");
