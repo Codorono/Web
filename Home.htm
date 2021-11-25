@@ -247,11 +247,11 @@
 		let nDaylightSavingTimeEndDateTicks = new Date(2022, 10, 6).getTime();
 		let nDaylightSavingTimeEndDiffDays = Math.ceil((nDaylightSavingTimeEndDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Daylight Saving Time</b> ends in " + nDaylightSavingTimeEndDiffDays + " day" + plural(nDaylightSavingTimeEndDiffDays) + " - ");
-*/
-		let nThanksgivingDateTicks = new Date(2021, 10, 25).getTime();
+
+		let nThanksgivingDateTicks = new Date(2022, 10, 24).getTime();
 		let nThanksgivingDiffDays = Math.ceil((nThanksgivingDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Thanksgiving</b> is in " + nThanksgivingDiffDays + " day" + plural(nThanksgivingDiffDays) + " - ");
-
+*/
 		let nWinterSolsticeDateTicks = new Date(2021, 11, 21).getTime();
 		let nWinterSolsticeDiffDays = Math.ceil((nWinterSolsticeDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Winter Solstice</b> is in " + nWinterSolsticeDiffDays + " day" + plural(nWinterSolsticeDiffDays) + " - ");
