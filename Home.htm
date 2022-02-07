@@ -294,7 +294,11 @@
 
 		let nSpringEquinoxDateTicks = new Date(2022, 2, 20).getTime();
 		let nSpringEquinoxDiffDays = Math.ceil((nSpringEquinoxDateTicks - nowDateTimeTicks) / dayTicks);
-		document.write("<b>Spring Equinox</b> is in " + nSpringEquinoxDiffDays + " day" + plural(nSpringEquinoxDiffDays));
+		document.write("<b>Spring Equinox</b> is in " + nSpringEquinoxDiffDays + " day" + plural(nSpringEquinoxDiffDays) + " - ");
+
+		let nEasterDateTicks = new Date(2022, 3, 17).getTime();
+		let nEasterDiffDays = Math.ceil((nEasterDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Easter</b> is in " + nEasterDiffDays + " day" + plural(nEasterDiffDays));
 
         document.write("</div>");
     </script>
