@@ -283,11 +283,11 @@
 		let nPresidentsDayDateTicks = new Date(2023, 1, 20).getTime();
 		let nPresidentsDayDiffDays = Math.ceil((nPresidentsDayDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>President's Day</b> is in " + nPresidentsDayDiffDays + " day" + plural(nPresidentsDayDiffDays) + " - ");
-*/
-		let nDaylightSavingTimeBeginDateTicks = new Date(2022, 2, 13).getTime();
+
+		let nDaylightSavingTimeBeginDateTicks = new Date(2023, 2, 12).getTime();
 		let nDaylightSavingTimeBeginDiffDays = Math.ceil((nDaylightSavingTimeBeginDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Daylight Saving Time</b> begins in " + nDaylightSavingTimeBeginDiffDays + " day" + plural(nDaylightSavingTimeBeginDiffDays) + " - ");
-
+*/
 		let nStPatricksDayDateTicks = new Date(2022, 2, 17).getTime();
 		let nStPatricksDayDiffDays = Math.ceil((nStPatricksDayDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>St. Patrick's Day</b> is in " + nStPatricksDayDiffDays + " day" + plural(nStPatricksDayDiffDays) + " - ");
@@ -298,7 +298,35 @@
 
 		let nEasterDateTicks = new Date(2022, 3, 17).getTime();
 		let nEasterDiffDays = Math.ceil((nEasterDateTicks - nowDateTimeTicks) / dayTicks);
-		document.write("<b>Easter</b> is in " + nEasterDiffDays + " day" + plural(nEasterDiffDays));
+		document.write("<b>Easter</b> is in " + nEasterDiffDays + " day" + plural(nEasterDiffDays) + " - ");
+
+		let nEarthDayDateTicks = new Date(2022, 3, 20).getTime();
+		let nEarthDayDiffDays = Math.ceil((nEarthDayDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Earth Day</b> is in " + nEarthDayDiffDays + " day" + plural(nEarthDayDiffDays) + " - ");
+
+		let nMothersDayDateTicks = new Date(2022, 4, 8).getTime();
+		let nMothersDayDiffDays = Math.ceil((nMothersDayDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Mother's Day</b> is in " + nMothersDayDiffDays + " day" + plural(nMothersDayDiffDays) + " - ");
+
+		let nMemorialDayDateTicks = new Date(2022, 4, 30).getTime();
+		let nMemorialDayDiffDays = Math.ceil((nMemorialDayDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Memorial Day</b> is in " + nMemorialDayDiffDays + " day" + plural(nMemorialDayDiffDays) + " - ");
+
+		let nJuneteenthDateTicks = new Date(2022, 5, 19).getTime();
+		let nJuneteenthDiffDays = Math.ceil((nJuneteenthDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Juneteenth</b> is in " + nJuneteenthDiffDays + " day" + plural(nJuneteenthDiffDays) + " - ");
+
+		let nFathersDayDateTicks = new Date(2022, 5, 19).getTime();
+		let nFathersDayDiffDays = Math.ceil((nFathersDayDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Father's Day</b> is in " + nFathersDayDiffDays + " day" + plural(nFathersDayDiffDays) + " - ");
+
+		let nSummerSolsticeDateTicks = new Date(2022, 5, 21).getTime();
+		let nSummerSolsticeDiffDays = Math.ceil((nSummerSolsticeDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Summer Solstice</b> is in " + nSummerSolsticeDiffDays + " day" + plural(nSummerSolsticeDiffDays) + " - ");
+
+		let nIndependenceDayDateTicks = new Date(2022, 6, 4).getTime();
+		let nIndependenceDayDiffDays = Math.ceil((nIndependenceDayDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Indpendence Day</b> is in " + nIndependenceDayDiffDays + " day" + plural(nIndependenceDayDiffDays));
 
         document.write("</div>");
     </script>
