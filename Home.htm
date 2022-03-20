@@ -287,11 +287,11 @@
 		let nDaylightSavingTimeBeginDateTicks = new Date(2023, 2, 12).getTime();
 		let nDaylightSavingTimeBeginDiffDays = Math.ceil((nDaylightSavingTimeBeginDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Daylight Saving Time</b> begins in " + nDaylightSavingTimeBeginDiffDays + " day" + plural(nDaylightSavingTimeBeginDiffDays) + " - ");
-*/
-		let nStPatricksDayDateTicks = new Date(2022, 2, 17).getTime();
+
+		let nStPatricksDayDateTicks = new Date(2023, 2, 17).getTime();
 		let nStPatricksDayDiffDays = Math.ceil((nStPatricksDayDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>St. Patrick's Day</b> is in " + nStPatricksDayDiffDays + " day" + plural(nStPatricksDayDiffDays) + " - ");
-
+*/
 		let nSpringEquinoxDateTicks = new Date(2022, 2, 20).getTime();
 		let nSpringEquinoxDiffDays = Math.ceil((nSpringEquinoxDateTicks - nowDateTimeTicks) / dayTicks);
 		document.write("<b>Spring Equinox</b> is in " + nSpringEquinoxDiffDays + " day" + plural(nSpringEquinoxDiffDays) + " - ");
