@@ -245,8 +245,8 @@
         document.write("<b>Sunset</b> is at " + sunsetHour + ":" + sunsetMinute.toString().padStart(2, "0") + " PM - ");
 
         let appVersion = navigator["appVersion"];
-        let edgversion = appVersion.match(/Edg\/((?:\d+\.){3}\d+)/);
-        document.write("<b>Version</b> is " + edgversion[1] + "<br />");
+        let edgVersion = appVersion.match(/Edg\/((?:\d+\.){3}\d+)/);
+        document.write("<b>Version</b> is " + edgVersion[1] + "<br />");
 /*
         let nThanksgivingDateTicks = new Date(2022, 10, 24).getTime();
         let nThanksgivingDiffDays = Math.ceil((nThanksgivingDateTicks - nowDateTimeTicks) / dayTicks);
