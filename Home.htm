@@ -248,18 +248,6 @@
         let edgVersion = appVersion.match(/Edg\/((?:\d+\.){3}\d+)/);
         document.write("<b>Version</b> is " + edgVersion[1] + "<br />");
 /*
-        let nWinterSolsticeDateTicks = new Date(2022, 11, 21).getTime();
-        let nWinterSolsticeDiffDays = Math.ceil((nWinterSolsticeDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>Winter Solstice</b> is in " + nWinterSolsticeDiffDays + " day" + plural(nWinterSolsticeDiffDays) + " - ");
-
-        let nChristmasDateTicks = new Date(2022, 11, 25).getTime();
-        let nChristmasDiffDays = Math.ceil((nChristmasDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>Christmas</b> is in " + nChristmasDiffDays + " day" + plural(nChristmasDiffDays) + " - ");
-
-        let nNewYearsDateTicks = new Date(2023, 0, 1).getTime();
-        let nNewYearsDiffDays = Math.ceil((nNewYearsDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>New Years Day</b> is in " + nNewYearsDiffDays + " day" + plural(nNewYearsDiffDays) + " - ");
-
         let nMartinLutherKingDayDateTicks = new Date(2023, 0, 16).getTime();
         let nMartinLutherKingDayDiffDays = Math.ceil((nMartinLutherKingDayDateTicks - nowDateTimeTicks) / dayTicks);
         document.write("<b>Martin Luther King Jr. Day</b> is in " + nMartinLutherKingDayDiffDays + " day" + plural(nMartinLutherKingDayDiffDays) + " - ");
@@ -354,7 +342,19 @@
 
 		let nThanksgivingDateTicks = new Date(2022, 10, 24).getTime();
 		let nThanksgivingDiffDays = Math.ceil((nThanksgivingDateTicks - nowDateTimeTicks) / dayTicks);
-		document.write("<b>Thanksgiving</b> is in " + nThanksgivingDiffDays + " day" + plural(nThanksgivingDiffDays));
+		document.write("<b>Thanksgiving</b> is in " + nThanksgivingDiffDays + " day" + plural(nThanksgivingDiffDays) + " - ");
+
+		let nWinterSolsticeDateTicks = new Date(2022, 11, 21).getTime();
+		let nWinterSolsticeDiffDays = Math.ceil((nWinterSolsticeDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Winter Solstice</b> is in " + nWinterSolsticeDiffDays + " day" + plural(nWinterSolsticeDiffDays) + " - ");
+
+		let nChristmasDateTicks = new Date(2022, 11, 25).getTime();
+		let nChristmasDiffDays = Math.ceil((nChristmasDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Christmas</b> is in " + nChristmasDiffDays + " day" + plural(nChristmasDiffDays) + " - ");
+
+		let nNewYearsDateTicks = new Date(2023, 0, 1).getTime();
+		let nNewYearsDiffDays = Math.ceil((nNewYearsDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>New Years Day</b> is in " + nNewYearsDiffDays + " day" + plural(nNewYearsDiffDays));
 
         document.write("</div>");
     </script>
