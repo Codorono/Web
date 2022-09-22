@@ -314,12 +314,12 @@
 
         let nLaborDayDateTicks = new Date(2023, 8, 4).getTime();
         let nLaborDayDiffDays = Math.ceil((nLaborDayDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>Labor Day</b> is in " + nLaborDayDiffDays + " day" + plural(nLaborDayDiffDays) + " - ");
-*/
-        let nAutumnEquinoxDateTicks = new Date(2022, 8, 22).getTime();
-        let nAutumnEquinoxDiffDays = Math.ceil((nAutumnEquinoxDateTicks - nowDateTimeTicks) / dayTicks);
-        document.write("<b>Autumn Equinox</b> is in " + nAutumnEquinoxDiffDays + " day" + plural(nAutumnEquinoxDiffDays) + " - ");
+    	document.write("<b>Labor Day</b> is in " + nLaborDayDiffDays + " day" + plural(nLaborDayDiffDays) + " - ");
 
+		let nAutumnEquinoxDateTicks = new Date(2023, 8, 22).getTime();
+		let nAutumnEquinoxDiffDays = Math.ceil((nAutumnEquinoxDateTicks - nowDateTimeTicks) / dayTicks);
+		document.write("<b>Autumn Equinox</b> is in " + nAutumnEquinoxDiffDays + " day" + plural(nAutumnEquinoxDiffDays) + " - ");
+*/
         let nIndigenousPeoplesDayDateTicks = new Date(2022, 9, 10).getTime();
         let nIndigenousPeoplesDayDiffDays = Math.ceil((nIndigenousPeoplesDayDateTicks - nowDateTimeTicks) / dayTicks);
         document.write("<b>Indigenous Peoples Day</b> is in " + nIndigenousPeoplesDayDiffDays + " day" + plural(nIndigenousPeoplesDayDiffDays) + " - ");
