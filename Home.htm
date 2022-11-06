@@ -327,11 +327,11 @@
         let nHalloweenDateTicks = new Date(2023, 9, 31).getTime();
         let nHalloweenDiffDays = Math.ceil((nHalloweenDateTicks - nowDateTimeTicks) / dayTicks);
         document.write("<b>Halloween</b> is in " + nHalloweenDiffDays + " day" + plural(nHalloweenDiffDays) + " - ");
-*/
-        let nDaylightSavingTimeEndDateTicks = new Date(2022, 10, 6).getTime();
+
+        let nDaylightSavingTimeEndDateTicks = new Date(2023, 10, 5).getTime();
         let nDaylightSavingTimeEndDiffDays = Math.ceil((nDaylightSavingTimeEndDateTicks - nowDateTimeTicks) / dayTicks);
         document.write("<b>Daylight Saving Time</b> ends in " + nDaylightSavingTimeEndDiffDays + " day" + plural(nDaylightSavingTimeEndDiffDays) + " - ");
-
+*/
         let nElectionDayDateTicks = new Date(2022, 10, 8).getTime();
         let nElectionDayDiffDays = Math.ceil((nElectionDayDateTicks - nowDateTimeTicks) / dayTicks);
         document.write("<b>Election Day</b> is in " + nElectionDayDiffDays + " day" + plural(nElectionDayDiffDays) + " - ");
