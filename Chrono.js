@@ -245,7 +245,7 @@ function GetChrono()
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
-    let strAppVersion = navigator["appVersion"]
+    let strAppVersion = navigator["userAgent"]
     let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
 
     strToday = "<b>Today</b> is " + new Date().toDateString() + " - "
@@ -253,6 +253,23 @@ function GetChrono()
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Edge version</b> is " + strEdgVersion[1] + "<br />"
+
+/*
+    strToday += GetEventDays("New Years Day", 2024, 1, 1) + " - "
+    strToday += GetEventDays("Martin Luther King Jr. Day", 2024, 1, 15) + " - "
+    strToday += GetEventDays("Ground Hog Day", 2024, 2, 2) + " - "
+    strToday += GetEventDays("Paul's Birthday", 2024, 2, 9) + " - "
+    strToday += GetEventDays("Valentine's Day", 2024, 2, 14) + " - "
+    strToday += GetEventDays("President's Day", 2024, 2, 19) + " - "
+    strToday += GetEventDays("Start of Daylight Saving Time", 2024, 3, 10) + " - "
+*/
+
+    strToday += GetEventDays("St. Patrick's Day", 2023, 3, 17) + " - "
+    strToday += GetEventDays("Spring Equinox", 2023, 3, 20) + " - "
+    strToday += GetEventDays("Easter", 2023, 4, 9) + " - "
+    strToday += GetEventDays("Earth Day", 2023, 4, 22) + " - "
+    strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
+    strToday += GetEventDays("Memorial Day", 2023, 5, 29)
 
 /*
     strToday += GetEventDays("Father's Day", 2023, 6, 18) + " - "
@@ -269,21 +286,7 @@ function GetChrono()
     strToday += GetEventDays("Thanksgiving Day", 2023, 11, 23) + " - "
     strToday += GetEventDays("Winter Solstice", 2023, 12, 21) + " - "
     strToday += GetEventDays("Christmas Day", 2023, 12, 25) + " - "
-    strToday += GetEventDays("New Years Day", 2024, 1, 1) + " - "
-    strToday += GetEventDays("Martin Luther King Jr. Day", 2024, 1, 15) + " - "
-    strToday += GetEventDays("Ground Hog Day", 2024, 2, 2) + " - "
-    strToday += GetEventDays("Paul's Birthday", 2024, 2, 9) + " - "
-    strToday += GetEventDays("Valentine's Day", 2024, 2, 14) + " - "
-    strToday += GetEventDays("President's Day", 2024, 2, 19) + " - "
-    strToday += GetEventDays("Start of Daylight Saving Time", 2024, 3, 10) + " - "
 */
-
-    strToday += GetEventDays("St. Patrick's Day", 2023, 3, 17) + " - "
-    strToday += GetEventDays("Spring Equinox", 2023, 3, 20) + " - "
-    strToday += GetEventDays("Easter", 2023, 4, 9) + " - "
-    strToday += GetEventDays("Earth Day", 2023, 4, 22) + " - "
-    strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
-    strToday += GetEventDays("Memorial Day", 2023, 5, 29)
 
 	return strToday
 }
