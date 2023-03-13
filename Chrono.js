@@ -17,7 +17,7 @@ function GetEventDays(strEvent, nYear, nMonth, nDay)
 function GetChrono()
 {
     const c_nDailySunTimes =
-	[
+    [
         0x03E501CC, 0x03E601CC, 0x03E701CC, 0x03E801CC, 0x03E901CC, 0x03EA01CC, 0x03EB01CC,
         0x03EC01CC, 0x03ED01CB, 0x03EF01CB, 0x03F001CB, 0x03F101CA, 0x03F201CA, 0x03F301CA,
         0x03F401C9, 0x03F601C9, 0x03F701C8, 0x03F801C7, 0x03F901C7, 0x03FB01C6, 0x03FC01C5,
@@ -228,7 +228,7 @@ function GetChrono()
         0x03DD01C8, 0x03DE01C9, 0x03DE01C9, 0x03DF01CA, 0x03DF01CA, 0x03E001CB, 0x03E101CB,
         0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
     ]
-    
+
     let nNowDateTimeTicks = Date.now()
 
     let nTableDateTicks = new Date(2020, 0, 1).getTime()
@@ -266,7 +266,7 @@ function GetChrono()
 
     strToday += GetEventDays("St. Patrick's Day", 2023, 3, 17) + " - "
     strToday += GetEventDays("Spring Equinox", 2023, 3, 20) + " - "
-    strToday += GetEventDays("Easter", 2023, 4, 9) + " - "
+    strToday += GetEventDays("Easter Day", 2023, 4, 9) + " - "
     strToday += GetEventDays("Earth Day", 2023, 4, 22) + " - "
     strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
     strToday += GetEventDays("Memorial Day", 2023, 5, 29)
@@ -288,5 +288,5 @@ function GetChrono()
     strToday += GetEventDays("Christmas Day", 2023, 12, 25) + " - "
 */
 
-	return strToday
+    return strToday
 }
