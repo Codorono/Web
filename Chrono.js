@@ -232,7 +232,7 @@ function GetChrono()
     let nNowDateTimeTicks = Date.now()
 
     let nTableDateTicks = new Date(2020, 0, 1).getTime()
-    let nTodayDiffDays = Math.floor((nNowDateTimeTicks - nTableDateTicks) / c_nDayTicks)
+    let nTodayDiffDays = (Math.floor((nNowDateTimeTicks - nTableDateTicks) / c_nDayTicks)) % 1461
 
     let nTodaySunTimes = c_nDailySunTimes[nTodayDiffDays]
 
@@ -262,17 +262,17 @@ function GetChrono()
     strToday += GetEventDays("Valentine's Day", 2024, 2, 14) + " - "
     strToday += GetEventDays("President's Day", 2024, 2, 19) + " - "
     strToday += GetEventDays("Start of Daylight Saving Time", 2024, 3, 10) + " - "
+    strToday += GetEventDays("St. Patrick's Day", 2023, 3, 17) + " - "
 */
 
-    strToday += GetEventDays("St. Patrick's Day", 2023, 3, 17) + " - "
     strToday += GetEventDays("Spring Equinox", 2023, 3, 20) + " - "
     strToday += GetEventDays("Easter Day", 2023, 4, 9) + " - "
     strToday += GetEventDays("Earth Day", 2023, 4, 22) + " - "
     strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
-    strToday += GetEventDays("Memorial Day", 2023, 5, 29)
+    strToday += GetEventDays("Memorial Day", 2023, 5, 29) + " - "
+    strToday += GetEventDays("Father's Day", 2023, 6, 18)
 
 /*
-    strToday += GetEventDays("Father's Day", 2023, 6, 18) + " - "
     strToday += GetEventDays("Juneteenth", 2023, 6, 19) + " - "
     strToday += GetEventDays("Summer Solstice", 2023, 6, 21) + " - "
     strToday += GetEventDays("Independence Day", 2023, 7, 4) + " - "
