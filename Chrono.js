@@ -288,7 +288,5 @@ function GetChrono()
     strToday += GetEventDays("Christmas Day", 2023, 12, 25) + " - "
 */
 
-//  document.getElementById("chrono").innerHTML = strToday
-
     return strToday
 }
