@@ -229,10 +229,12 @@ function GetChrono()
         0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
     ]
 
-    let nNowDateTimeTicks = Date.now()
+    let nTodayDateTime = new Date();
+    let nTodayYear = nTodayDateTime.getFullYear()
+    let nTodayDateTicks = nTodayDateTime.getTime()
 
     let nTableDateTicks = new Date(2020, 0, 1).getTime()
-    let nTodayDiffDays = (Math.floor((nNowDateTimeTicks - nTableDateTicks) / c_nDayTicks)) % 1461
+    let nTodayDiffDays = (Math.floor((nTodayDateTicks - nTableDateTicks) / c_nDayTicks)) % 1461
 
     let nTodaySunTimes = c_nDailySunTimes[nTodayDiffDays]
 
@@ -245,13 +247,16 @@ function GetChrono()
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
+    let nJulianDateTicks = new Date(nTodayYear, 0, 1).getTime()
+    let nJulianDays = (Math.floor((nTodayDateTicks - nJulianDateTicks) / c_nDayTicks)) + 1
+
     let strAppVersion = navigator["userAgent"]
     let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
 
     strToday = "<b>Today</b> is " + new Date().toDateString() + " - "
-
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
+    strToday += "<b>Julian date</b> is " + nJulianDays + " - "
     strToday += "<b>Edge version</b> is " + strEdgVersion[1] + "<br />"
 
 /*
