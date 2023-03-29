@@ -256,7 +256,7 @@ function GetChrono()
     strToday = "<b>Today</b> is " + nTodayDate.toDateString() + " - "
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
-    strToday += "<b>Julian date</b> is " + nJulianDays + " - "
+    strToday += "<b>Julian day</b> is " + nJulianDays + " - "
     strToday += "<b>Edge version</b> is " + strEdgVersion[1] + "<br />"
 
 /*
