@@ -276,8 +276,8 @@ function GetChrono()
     strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
     strToday += GetEventDays("Memorial Day", 2023, 5, 29) + " - "
     strToday += GetEventDays("Father's Day", 2023, 6, 18) + " - "
-    strToday += GetEventDays("Juneteenth", 2023, 6, 19)
-    strToday += GetEventDays("Summer Solstice", 2023, 6, 21) + " - "
+    strToday += GetEventDays("Juneteenth", 2023, 6, 19) + " - "
+    strToday += GetEventDays("Summer Solstice", 2023, 6, 21)
 
 /*
     strToday += GetEventDays("Independence Day", 2023, 7, 4) + " - "
