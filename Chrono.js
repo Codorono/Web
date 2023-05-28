@@ -248,7 +248,7 @@ function GetChrono()
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
     let nJulianTicks = new Date(nTodayYear, 0, 1).getTime()
-    let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks)) + 1
+    let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks)) 
 
     let strAppVersion = navigator["userAgent"]
     let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
@@ -271,18 +271,18 @@ function GetChrono()
     strToday += GetEventDays("Spring Equinox", 2024, 3, 19) + " - "
     strToday += GetEventDays("Easter Day", 2024, 3, 31) + " - "
     strToday += GetEventDays("Earth Day", 2024, 4, 22) + " - "
-    strToday += GetEventDays("Mother's Day", 2023, 5, 14) + " - "
+    strToday += GetEventDays("Mother's Day", 2024, 5, 12) + " - "
+    strToday += GetEventDays("Memorial Day", 2024, 5, 27) + " - "
 */
 
-    strToday += GetEventDays("Memorial Day", 2023, 5, 29) + " - "
     strToday += GetEventDays("Father's Day", 2023, 6, 18) + " - "
     strToday += GetEventDays("Juneteenth", 2023, 6, 19) + " - "
     strToday += GetEventDays("Summer Solstice", 2023, 6, 21) + " - "
     strToday += GetEventDays("Independence Day", 2023, 7, 4) + " - "
-    strToday += GetEventDays("Labor Day", 2023, 9, 4)
+    strToday += GetEventDays("Labor Day", 2023, 9, 4) + " - "
+    strToday += GetEventDays("Autumn Equinox", 2023, 9, 22)
 
 /*
-    strToday += GetEventDays("Autumn Equinox", 2023, 9, 22) + " - "
     strToday += GetEventDays("Indigenous Peoples Day", 2023, 10, 9) + " - "
     strToday += GetEventDays("Halloween", 2023, 10, 31) + " - "
     strToday += GetEventDays("End of Daylight Saving Time", 2023, 11, 5) + " - "
