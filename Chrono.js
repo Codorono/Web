@@ -248,7 +248,7 @@ function GetChrono()
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
     let nJulianTicks = new Date(nTodayYear, 0, 1).getTime()
-    let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks) + 1) 
+    let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks)) + 1 
 
     let strAppVersion = navigator["userAgent"]
     let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
