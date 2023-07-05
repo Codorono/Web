@@ -274,18 +274,18 @@ function GetChrono()
     strToday += GetEventDays("Mother's Day", 2024, 5, 12) + " - "
     strToday += GetEventDays("Memorial Day", 2024, 5, 27) + " - "
     strToday += GetEventDays("Father's Day", 2024, 6, 16) + " - "
-    strToday += GetEventDays("Juneteenth", 2023, 6, 19) + " - "
+    strToday += GetEventDays("Juneteenth", 2024, 6, 19) + " - "
     strToday += GetEventDays("Summer Solstice", 2024, 6, 20) + " - "
+    strToday += GetEventDays("Independence Day", 2024, 7, 4) + " - "
 */
 
-    strToday += GetEventDays("Independence Day", 2023, 7, 4) + " - "
     strToday += GetEventDays("Labor Day", 2023, 9, 4) + " - "
     strToday += GetEventDays("Autumn Equinox", 2023, 9, 22) + " - "
     strToday += GetEventDays("Indigenous Peoples Day", 2023, 10, 9) + " - "
-    strToday += GetEventDays("Halloween", 2023, 10, 31)
+    strToday += GetEventDays("Halloween", 2023, 10, 31) + " - "
+    strToday += GetEventDays("End of Daylight Saving Time", 2023, 11, 5)
 
 /*
-    strToday += GetEventDays("End of Daylight Saving Time", 2023, 11, 5) + " - "
     strToday += GetEventDays("Election Day", 2023, 11, 7) + " - "
     strToday += GetEventDays("Veteran's Day", 2023, 11, 11) + " - "
     strToday += GetEventDays("Thanksgiving Day", 2023, 11, 23) + " - "
