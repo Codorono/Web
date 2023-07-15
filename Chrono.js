@@ -250,7 +250,7 @@ function GetChrono()
     let nJulianTicks = new Date(nTodayYear, 0, 1).getTime()
     let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks)) + 1
 
-    let strAppVersion = navigator["userAgent"]
+    let strAppVersion = navigator["appVersion"]
     let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
 
     strToday = "<b>Today</b> is " + nTodayDate.toDateString() + " - "
