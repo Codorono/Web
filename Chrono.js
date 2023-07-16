@@ -5,6 +5,21 @@ function GetPlural(nNumber)
     return (nNumber === 1) ? "" : "s"
 }
 
+function GetPlurale(nNumber)
+{
+    return (nNumber === 1) ? "" : "es"
+}
+
+function GetYearDays(nYear)
+{
+    if (((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
+    {
+        return 366
+    }
+
+    return 365
+}
+
 function GetEventDays(strEvent, nYear, nMonth, nDay)
 {
     let nNowDateTimeTicks = Date.now()
@@ -229,12 +244,12 @@ function GetChrono()
         0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
     ]
 
-    let nTodayDate = new Date();
-    let nTodayYear = nTodayDate.getFullYear()
-    let nTodayTicks = nTodayDate.getTime()
+    let nNowDateTime = new Date();
+    let nNowTicks = nNowDateTime.getTime()
+    let nThisYear = nNowDateTime.getFullYear()
 
-    let nTableTicks = new Date(2020, 0, 1).getTime()
-    let nTodayDiffDays = (Math.floor((nTodayTicks - nTableTicks) / c_nDayTicks)) % 1461
+    let nSunTableTicks = new Date(2020, 0, 1).getTime()
+    let nTodayDiffDays = (Math.floor((nNowTicks - nSunTableTicks) / c_nDayTicks)) % 1461
 
     let nTodaySunTimes = c_nDailySunTimes[nTodayDiffDays]
 
@@ -247,16 +262,19 @@ function GetChrono()
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
-    let nJulianTicks = new Date(nTodayYear, 0, 1).getTime()
-    let nJulianDays = (Math.floor((nTodayTicks - nJulianTicks) / c_nDayTicks)) + 1
+    let nJan1Ticks = new Date(nThisYear, 0, 1).getTime()
+    let nJulianDays = (Math.floor((nNowTicks - nJan1Ticks) / c_nDayTicks)) + 1
 
-    let strAppVersion = navigator["appVersion"]
-    let strEdgVersion = strAppVersion.match(/Edg\/((?:\d+\.){3}\d+)/)
+    let nYearTicks = GetYearDays(nThisYear) * c_nDayTicks
+    let nYearPercent = Math.round(((nNowTicks - nJan1Ticks) * 100) / nYearTicks)
 
-    strToday = "<b>Today</b> is " + nTodayDate.toDateString() + " - "
+    let strUserAgent = navigator["userAgent"]
+    let strEdgVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
+
+    strToday = "<b>Today</b> is " + nNowDateTime.toDateString() + " - "
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
-    strToday += "<b>Julian day</b> is " + nJulianDays + " - "
+    strToday += "<b>Julian day</b> is " + nJulianDays + " (" + nYearPercent + "%) - "
     strToday += "<b>Edge version</b> is " + strEdgVersion[1] + "<br />"
 
 /*
