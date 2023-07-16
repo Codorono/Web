@@ -266,7 +266,7 @@ function GetChrono()
     let nJulianDays = (Math.floor((nNowTicks - nJan1Ticks) / c_nDayTicks)) + 1
 
     let nYearTicks = GetYearDays(nThisYear) * c_nDayTicks
-    let nYearPercent = Math.round(((nNowTicks - nJan1Ticks) * 100) / nYearTicks)
+    let nYearPercent = Math.floor(((nNowTicks - nJan1Ticks) * 100) / nYearTicks)
 
     let strUserAgent = navigator["userAgent"]
     let strEdgVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
