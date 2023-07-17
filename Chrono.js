@@ -246,7 +246,7 @@ function GetChrono()
 
     let nNowDateTime = new Date();
     let nNowTicks = nNowDateTime.getTime()
-    let nThisYear = nNowDateTime.getFullYear()
+    let nNowYear = nNowDateTime.getFullYear()
 
     let nSunTableTicks = new Date(2020, 0, 1).getTime()
     let nTodayDiffDays = (Math.floor((nNowTicks - nSunTableTicks) / c_nDayTicks)) % 1461
@@ -262,20 +262,22 @@ function GetChrono()
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
-    let nJan1Ticks = new Date(nThisYear, 0, 1).getTime()
-    let nJulianDays = (Math.floor((nNowTicks - nJan1Ticks) / c_nDayTicks)) + 1
+    let nJan1Ticks = new Date(nNowYear, 0, 1).getTime()
+    let nNowYearTicks = nNowTicks - nJan1Ticks
 
-    let nYearTicks = GetYearDays(nThisYear) * c_nDayTicks
-    let nYearPercent = Math.floor(((nNowTicks - nJan1Ticks) * 100) / nYearTicks)
+    let nJulianDays = (Math.floor(nNowYearTicks / c_nDayTicks)) + 1
+
+    let nTotalYearTicks = GetYearDays(nNowYear) * c_nDayTicks
+    let nYearPercent = Math.floor((nNowYearTicks * 100) / nTotalYearTicks)
 
     let strUserAgent = navigator["userAgent"]
-    let strEdgVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
+    let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
 
     strToday = "<b>Today</b> is " + nNowDateTime.toDateString() + " - "
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Julian day</b> is " + nJulianDays + " (" + nYearPercent + "%) - "
-    strToday += "<b>Edge version</b> is " + strEdgVersion[1] + "<br />"
+    strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
 
 /*
     strToday += GetEventDays("New Years Day", 2024, 1, 1) + " - "
