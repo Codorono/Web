@@ -303,7 +303,8 @@ function GetChrono()
     strToday += GetEventDays("Autumn Equinox", 2023, 9, 22) + " - "
     strToday += GetEventDays("Indigenous Peoples Day", 2023, 10, 9) + " - "
     strToday += GetEventDays("Halloween", 2023, 10, 31) + " - "
-    strToday += GetEventDays("End of Daylight Saving Time", 2023, 11, 5)
+    strToday += GetEventDays("End of Daylight Saving Time", 2023, 11, 5) + " - "
+    strToday += GetEventDays("65", 2024, 2, 9)
 
 /*
     strToday += GetEventDays("Election Day", 2023, 11, 7) + " - "
