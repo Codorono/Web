@@ -20,6 +20,11 @@ function GetYearDays(nYear)
     return 365
 }
 
+function GetWeekNum(nNowTicks)
+{
+    return 0
+}
+
 function GetEventDays(strEvent, nYear, nMonth, nDay)
 {
     let nNowDateTimeTicks = Date.now()
@@ -265,6 +270,8 @@ function GetChrono()
     let nJan1Ticks = new Date(nNowYear, 0, 1).getTime()
     let nNowYearTicks = nNowTicks - nJan1Ticks
 
+    let nWeekNum = GetWeekNum(nNowTicks)
+
     let nJulianDays = (Math.floor(nNowYearTicks / c_nDayTicks)) + 1
 
     let nTotalYearTicks = GetYearDays(nNowYear) * c_nDayTicks
@@ -276,6 +283,7 @@ function GetChrono()
     strToday = "<b>Today</b> is " + nNowDateTime.toDateString() + " - "
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
+    strToday += "<b>Week</b> is " + nWeekNum + " - "
     strToday += "<b>Julian day</b> is " + nJulianDays + " (" + nYearPercent + "%) - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
 
