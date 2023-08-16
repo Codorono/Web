@@ -22,38 +22,68 @@ function GetYearDays(nYear)
 
 function GetWeekNum()
 {
-    return 0
+    let oNowLocalDateTime = new Date()
+
+    let nTodayDow = oNowLocalDateTime.getDay();
+    console.log("nTodayDow is " + nTodayDow)
+
+    let nDow1 = (nTodayDow === 0) ? 6 : nTodayDow - 1
+    console.log("nDow1 is " + nDow1)
+
+    let nTodayUtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), oNowLocalDateTime.getMonth(), oNowLocalDateTime.getDate())
+
+    let nThisMondayUtcTicks = nTodayUtcTicks - (nDow1 * c_nDayTicks)
+    console.log("nMondayUtcTicks is " + nThisMondayUtcTicks)
+
+
+
+
+    let oJan4LocalDateTime = new Date(oNowLocalDateTime.getFullYear(), 0, 4)
+
+    let nJan4Dow = oJan4LocalDateTime.getDay();
+    console.log("nJan4Dow is " + nJan4Dow)
+
+    let nDow2 = (nJan4Dow === 0) ? 6 : nJan4Dow - 1
+    console.log("nDow2 is " + nDow2)
+
+    let nJan4UtcTicks = Date.UTC(oJan4LocalDateTime.getFullYear(), oJan4LocalDateTime.getMonth(), oJan4LocalDateTime.getDate())
+
+    let nJan4MondayUtcTicks = nJan4UtcTicks - (nDow2 * c_nDayTicks)
+    console.log("nJan4MondayUtcTicks is " + nJan4MondayUtcTicks)
+
+    return ((nThisMondayUtcTicks - nJan4MondayUtcTicks) / (7 * c_nDayTicks)) + 1
 }
 
 function GetJulianDay()
 {
-    let oTodayLocalDate = new Date(new Date().setHours(0, 0, 0, 0))
+    let oNowLocalDateTime = new Date()
 
-    let nTodayUtcTicks = Date.UTC(oTodayLocalDate.getFullYear(), oTodayLocalDate.getMonth(), oTodayLocalDate.getDate())
-
-    let nJan1UtcTicks = Date.UTC(oTodayLocalDate.getFullYear(), 0, 1)
+    let nTodayUtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), oNowLocalDateTime.getMonth(), oNowLocalDateTime.getDate())
+    let nJan1UtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), 0, 1)
 
     return ((nTodayUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
 }
 
 function GetYearPercent()
 {
-    let oNowLocalDateTime = new Date()
+    let nCurrentYear = new Date().getFullYear()
 
-    let nTotalYearTicks = GetYearDays(oNowLocalDateTime.getFullYear()) * c_nDayTicks
+    let nTotalYearTicks = GetYearDays(nCurrentYear) * c_nDayTicks
 
-    let nNowUtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), oNowLocalDateTime.getMonth(), oNowLocalDateTime.getDate(), oNowLocalDateTime.getHours(), oNowLocalDateTime.getMinutes(), oNowLocalDateTime.getSeconds(), oNowLocalDateTime.getMilliseconds())
-
-    let nJan1UtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), 0, 1)
+    let nNowUtcTicks = Date.now()
+    let nJan1UtcTicks = Date.UTC(nCurrentYear, 0, 1)
 
     return Math.floor(((nNowUtcTicks - nJan1UtcTicks) * 100) / nTotalYearTicks)
 }
 
 function GetEventDays(strEvent, nYear, nMonth, nDay)
 {
-    let nNowDateTimeTicks = Date.now()
-    let nEventDateTicks = new Date(nYear, nMonth - 1, nDay).getTime()
-    let nEventDiffDays = Math.ceil((nEventDateTicks - nNowDateTimeTicks) / c_nDayTicks)
+    let oNowLocalDateTime = new Date()
+
+    let nTodayUtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), oNowLocalDateTime.getMonth(), oNowLocalDateTime.getDate())
+    let nEventUtcTicks = Date.UTC(nYear, nMonth - 1, nDay)
+
+    let nEventDiffDays = ((nEventUtcTicks - nTodayUtcTicks) / c_nDayTicks)
 
     return "<b>" + strEvent + "</b> is in " + nEventDiffDays + " day" + GetPlural(nEventDiffDays)
 }
