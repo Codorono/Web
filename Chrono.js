@@ -20,9 +20,33 @@ function GetYearDays(nYear)
     return 365
 }
 
-function GetWeekNum(nNowTicks)
+function GetWeekNum()
 {
     return 0
+}
+
+function GetJulianDay()
+{
+    let oTodayLocalDate = new Date(new Date().setHours(0, 0, 0, 0))
+
+    let nTodayUtcTicks = Date.UTC(oTodayLocalDate.getFullYear(), oTodayLocalDate.getMonth(), oTodayLocalDate.getDate())
+
+    let nJan1UtcTicks = Date.UTC(oTodayLocalDate.getFullYear(), 0, 1)
+
+    return ((nTodayUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
+}
+
+function GetYearPercent()
+{
+    let oNowLocalDateTime = new Date()
+
+    let nTotalYearTicks = GetYearDays(oNowLocalDateTime.getFullYear()) * c_nDayTicks
+
+    let nNowUtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), oNowLocalDateTime.getMonth(), oNowLocalDateTime.getDate(), oNowLocalDateTime.getHours(), oNowLocalDateTime.getMinutes(), oNowLocalDateTime.getSeconds(), oNowLocalDateTime.getMilliseconds())
+
+    let nJan1UtcTicks = Date.UTC(oNowLocalDateTime.getFullYear(), 0, 1)
+
+    return Math.floor(((nNowUtcTicks - nJan1UtcTicks) * 100) / nTotalYearTicks)
 }
 
 function GetEventDays(strEvent, nYear, nMonth, nDay)
@@ -249,7 +273,7 @@ function GetChrono()
         0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
     ]
 
-    let nNowDateTime = new Date();
+    let nNowDateTime = new Date()
     let nNowTicks = nNowDateTime.getTime()
     let nNowYear = nNowDateTime.getFullYear()
 
@@ -267,15 +291,9 @@ function GetChrono()
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
-    let nJan1Ticks = new Date(nNowYear, 0, 1).getTime()
-    let nNowYearTicks = nNowTicks - nJan1Ticks
-
-    let nWeekNum = GetWeekNum(nNowTicks)
-
-    let nJulianDays = (Math.floor(nNowYearTicks / c_nDayTicks)) + 1
-
-    let nTotalYearTicks = GetYearDays(nNowYear) * c_nDayTicks
-    let nYearPercent = Math.floor((nNowYearTicks * 100) / nTotalYearTicks)
+    let nWeekNum = GetWeekNum()
+    let nJulianDay = GetJulianDay()
+    let nYearPercent = GetYearPercent()
 
     let strUserAgent = navigator["userAgent"]
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
@@ -284,7 +302,7 @@ function GetChrono()
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Week</b> is " + nWeekNum + " - "
-    strToday += "<b>Julian day</b> is " + nJulianDays + " (" + nYearPercent + "%) - "
+    strToday += "<b>Julian day</b> is " + nJulianDay + " (" + nYearPercent + "%) - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
 
 /*
