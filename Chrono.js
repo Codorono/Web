@@ -223,7 +223,7 @@ function GetPlurale(nNumber)
     return (nNumber === 1) ? "" : "es"
 }
 
-function GetYearDays(nYear)
+function GetDaysInYear(nYear)
 {
     if (((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
     {
@@ -233,14 +233,12 @@ function GetYearDays(nYear)
     return 365
 }
 
-function GetWeekOfYear(oNow)
+function GetWeekOfYear(oDate)
 {
-    let oThisThursdayDate = new Date(oNow.getFullYear(), oNow.getMonth(), oNow.getDate())
-
+    let oThisThursdayDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
     oThisThursdayDate.setDate(oThisThursdayDate.getDate() - (oThisThursdayDate.getDay() || 7) + 4)
 
     let oWeek1ThursdayDate = new Date(oThisThursdayDate.getFullYear(), 0, 4)
-
     oWeek1ThursdayDate.setDate(oWeek1ThursdayDate.getDate() - (oWeek1ThursdayDate.getDay() || 7) + 4)
 
     let nThisThursdayUtcTicks = Date.UTC(oThisThursdayDate.getFullYear(), oThisThursdayDate.getMonth(), oThisThursdayDate.getDate())
@@ -249,30 +247,30 @@ function GetWeekOfYear(oNow)
     return ((nThisThursdayUtcTicks - nWeek1ThursdayUtcTicks) / (7 * c_nDayTicks)) + 1
 }
 
-function GetDayOfYear(oNow)
+function GetDayOfYear(oDate)
 {
-    let nTodayUtcTicks = Date.UTC(oNow.getFullYear(), oNow.getMonth(), oNow.getDate())
-    let nJan1UtcTicks = Date.UTC(oNow.getFullYear(), 0, 1)
+    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
+    let nJan1UtcTicks = Date.UTC(oDate.getFullYear(), 0, 1)
 
-    return ((nTodayUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
+    return ((nThisUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
 }
 
-function GetYearPercent(oNow)
+function GetPercentOfYear(oDate)
 {
-    let nNowUtcTicks = Date.UTC(oNow.getFullYear(), oNow.getMonth(), oNow.getDate(), oNow.getHours(), oNow.getMinutes(), oNow.getSeconds(), oNow.getMilliseconds())
-    let nJan1UtcTicks = Date.UTC(oNow.getFullYear(), 0, 1)
+    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate(), oDate.getHours(), oDate.getMinutes(), oDate.getSeconds(), oDate.getMilliseconds())
+    let nJan1UtcTicks = Date.UTC(oDate.getFullYear(), 0, 1)
 
-    let nYearTicks = GetYearDays(oNow.getFullYear()) * c_nDayTicks
+    let nYearTicks = GetDaysInYear(oDate.getFullYear()) * c_nDayTicks
 
-    return Math.floor(((nNowUtcTicks - nJan1UtcTicks) * 100) / nYearTicks)
+    return Math.floor(((nThisUtcTicks - nJan1UtcTicks) * 100) / nYearTicks)
 }
 
-function GetEventDays(oNow, strEvent, nYear, nMonth, nDay)
+function GetEventDays(oDate, strEvent, nYear, nMonth, nDay)
 {
-    let nTodayUtcTicks = Date.UTC(oNow.getFullYear(), oNow.getMonth(), oNow.getDate())
+    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
     let nEventUtcTicks = Date.UTC(nYear, nMonth - 1, nDay)
 
-    let nEventDiffDays = ((nEventUtcTicks - nTodayUtcTicks) / c_nDayTicks)
+    let nEventDiffDays = ((nEventUtcTicks - nThisUtcTicks) / c_nDayTicks)
 
     return "<b>" + strEvent + "</b> is in " + nEventDiffDays + " day" + GetPlural(nEventDiffDays)
 }
@@ -299,7 +297,7 @@ function GetChrono()
 
     let nWeekOfYear = GetWeekOfYear(oNow)
     let nDayOfYear = GetDayOfYear(oNow)
-    let nYearPercent = GetYearPercent(oNow)
+    let nPercentOfYear = GetPercentOfYear(oNow)
 
     let strUserAgent = navigator["userAgent"]
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
@@ -308,7 +306,7 @@ function GetChrono()
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
-    strToday += "<b>Day</b> is " + nDayOfYear + " (" + nYearPercent + "%) - "
+    strToday += "<b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%) - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
 
 /*
