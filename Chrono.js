@@ -265,14 +265,14 @@ function GetPercentOfYear(oDate)
     return Math.floor(((nThisUtcTicks - nJan1UtcTicks) * 100) / nYearTicks)
 }
 
-function GetEventDays(oDate, strEvent, nYear, nMonth, nDay)
+function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
 {
     let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
     let nEventUtcTicks = Date.UTC(nYear, nMonth - 1, nDay)
 
     let nEventDiffDays = ((nEventUtcTicks - nThisUtcTicks) / c_nDayTicks)
 
-    return "<b>" + strEvent + "</b> is in " + nEventDiffDays + " day" + GetPlural(nEventDiffDays)
+    return "<b>" + strEvent + "</b> " + strVerb + " in " + nEventDiffDays + " day" + GetPlural(nEventDiffDays)
 }
 
 function GetChrono()
@@ -309,36 +309,36 @@ function GetChrono()
     strToday += "<b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%) - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
 
-    strToday += GetEventDays(oNow, "Election Day", 2023, 11, 7) + " - "
-    strToday += GetEventDays(oNow, "Veteran's Day", 2023, 11, 11) + " - "
-    strToday += GetEventDays(oNow, "Thanksgiving Day", 2023, 11, 23) + " - "
-    strToday += GetEventDays(oNow, "Winter Solstice", 2023, 12, 21) + " - "
-    strToday += GetEventDays(oNow, "Christmas Day", 2023, 12, 25) + " - "
-    strToday += GetEventDays(oNow, "65", 2024, 2, 9)
+    strToday += GetEventDays(oNow, "Veteran's Day", "is", 2023, 11, 11) + " - "
+    strToday += GetEventDays(oNow, "Thanksgiving Day", "is", 2023, 11, 23) + " - "
+    strToday += GetEventDays(oNow, "Winter Solstice", "is", 2023, 12, 21) + " - "
+    strToday += GetEventDays(oNow, "Christmas Day", "is", 2023, 12, 25) + " - "
+    strToday += GetEventDays(oNow, "New Years Day", "is", 2024, 1, 1) + " - "
+    strToday += GetEventDays(oNow, "65", "is", 2024, 2, 9)
 
 /*
-    strToday += GetEventDays(oNow, "New Years Day", 2024, 1, 1) + " - "
-    strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", 2024, 1, 15) + " - "
-    strToday += GetEventDays(oNow, "Ground Hog Day", 2024, 2, 2) + " - "
-    strToday += GetEventDays(oNow, "Paul's Birthday", 2024, 2, 9) + " - "
-    strToday += GetEventDays(oNow, "Valentine's Day", 2024, 2, 14) + " - "
-    strToday += GetEventDays(oNow, "President's Day", 2024, 2, 19) + " - "
-    strToday += GetEventDays(oNow, "Start of Daylight Saving Time", 2024, 3, 10) + " - "
-    strToday += GetEventDays(oNow, "St. Patrick's Day", 2024, 3, 17) + " - "
-    strToday += GetEventDays(oNow, "Spring Equinox", 2024, 3, 19) + " - "
-    strToday += GetEventDays(oNow, "Easter Day", 2024, 3, 31) + " - "
-    strToday += GetEventDays(oNow, "Earth Day", 2024, 4, 22) + " - "
-    strToday += GetEventDays(oNow, "Mother's Day", 2024, 5, 12) + " - "
-    strToday += GetEventDays(oNow, "Memorial Day", 2024, 5, 27) + " - "
-    strToday += GetEventDays(oNow, "Father's Day", 2024, 6, 16) + " - "
-    strToday += GetEventDays(oNow, "Juneteenth", 2024, 6, 19) + " - "
-    strToday += GetEventDays(oNow, "Summer Solstice", 2024, 6, 20) + " - "
-    strToday += GetEventDays(oNow, "Independence Day", 2024, 7, 4) + " - "
-    strToday += GetEventDays(oNow, "Labor Day", 2024, 9, 2) + " - "
-    strToday += GetEventDays(oNow, "Autumn Equinox", 2024, 9, 22) + " - "
-    strToday += GetEventDays(oNow, "Indigenous Peoples Day", 2024, 10, 14) + " - "
-    strToday += GetEventDays(oNow, "Halloween", 2024, 10, 31) + " - "
-    strToday += GetEventDays(oNow, "End of Daylight Saving Time", 2024, 11, 3) + " - "
+    strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2024, 1, 15) + " - "
+    strToday += GetEventDays(oNow, "Ground Hog Day", "is", 2024, 2, 2) + " - "
+    strToday += GetEventDays(oNow, "Paul's Birthday", "is", 2024, 2, 9) + " - "
+    strToday += GetEventDays(oNow, "Valentine's Day", "is", 2024, 2, 14) + " - "
+    strToday += GetEventDays(oNow, "President's Day", "is", 2024, 2, 19) + " - "
+    strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2024, 3, 10) + " - "
+    strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2024, 3, 17) + " - "
+    strToday += GetEventDays(oNow, "Spring Equinox", "is", 2024, 3, 19) + " - "
+    strToday += GetEventDays(oNow, "Easter Day", "is", 2024, 3, 31) + " - "
+    strToday += GetEventDays(oNow, "Earth Day", "is", 2024, 4, 22) + " - "
+    strToday += GetEventDays(oNow, "Mother's Day", "is", 2024, 5, 12) + " - "
+    strToday += GetEventDays(oNow, "Memorial Day", "is", 2024, 5, 27) + " - "
+    strToday += GetEventDays(oNow, "Father's Day", "is", 2024, 6, 16) + " - "
+    strToday += GetEventDays(oNow, "Juneteenth", "is", 2024, 6, 19) + " - "
+    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2024, 6, 20) + " - "
+    strToday += GetEventDays(oNow, "Independence Day", "is", 2024, 7, 4) + " - "
+    strToday += GetEventDays(oNow, "Labor Day", "is", 2024, 9, 2) + " - "
+    strToday += GetEventDays(oNow, "Autumn Equinox", "is", 2024, 9, 22) + " - "
+    strToday += GetEventDays(oNow, "Indigenous Peoples Day", "is", 2024, 10, 14) + " - "
+    strToday += GetEventDays(oNow, "Halloween", "is", 2024, 10, 31) + " - "
+    strToday += GetEventDays(oNow, "Daylight Saving Time", "ends", 2024, 11, 3) + " - "
+    strToday += GetEventDays(oNow, "Election Day", "is", 2024, 11, 5) + " - "
 */
 
     return strToday
