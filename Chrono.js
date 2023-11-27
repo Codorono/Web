@@ -314,7 +314,8 @@ function GetChrono()
     strToday += GetEventDays(oNow, "New Years Day", "is", 2024, 1, 1) + " - "
     strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2024, 1, 15) + " - "
     strToday += GetEventDays(oNow, "Ground Hog Day", "is", 2024, 2, 2) + " - "
-    strToday += GetEventDays(oNow, "65", "is", 2024, 2, 9)
+    strToday += GetEventDays(oNow, "65", "is", 2024, 2, 9) + " - "
+    strToday += GetEventDays(oNow, "Election Day", "is", 2024, 11, 5)
 
 /*
     strToday += GetEventDays(oNow, "Paul's Birthday", "is", 2024, 2, 9) + " - "
@@ -336,7 +337,6 @@ function GetChrono()
     strToday += GetEventDays(oNow, "Indigenous Peoples Day", "is", 2024, 10, 14) + " - "
     strToday += GetEventDays(oNow, "Halloween", "is", 2024, 10, 31) + " - "
     strToday += GetEventDays(oNow, "Daylight Saving Time", "ends", 2024, 11, 3) + " - "
-    strToday += GetEventDays(oNow, "Election Day", "is", 2024, 11, 5) + " - "
     strToday += GetEventDays(oNow, "Veteran's Day", "is", 2024, 11, 11) + " - "
     strToday += GetEventDays(oNow, "Thanksgiving Day", "is", 2024, 11, 28) + " - "
 */
