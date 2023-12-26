@@ -300,14 +300,19 @@ function GetChrono()
     let nPercentOfYear = GetPercentOfYear(oNow)
 
     let strUserAgent = navigator["userAgent"]
-    let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)
+    let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
+
+    if (strEdgeVersion.endsWith(".0.0.0"))
+    {
+        strEdgeVersion = strEdgeVersion.substring(0, strEdgeVersion.length - 6)
+    }
 
     strToday = "<b>Today</b> is " + oNow.toDateString() + " - "
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
     strToday += "<b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%) - "
-    strToday += "<b>Edge version</b> is " + strEdgeVersion[1] + "<br />"
+    strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
     strToday += GetEventDays(oNow, "New Years Day", "is", 2024, 1, 1) + " - "
     strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2024, 1, 15) + " - "
