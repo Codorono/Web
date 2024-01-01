@@ -229,7 +229,7 @@ function GetDaysInMonth(nYear, nMonth)
 
     let nDaysInMonth = c_nMonthDays[nMonth]
 
-    if ((nMonth == 2) && ((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
+    if ((nMonth === 2) && ((nYear & 3) === 0) && (((nYear % 100) !== 0) || ((nYear % 400) === 0)))
     {
         nDaysInMonth = 29
     }
@@ -241,7 +241,7 @@ function GetDaysInYear(nYear)
 {
     let nDaysInYear = 365
 
-    if (((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
+    if (((nYear & 3) === 0) && (((nYear % 100) !== 0) || ((nYear % 400) === 0)))
     {
         nDaysInYear = 366
     }
