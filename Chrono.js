@@ -269,16 +269,16 @@ function GetPercentOfYear(oDate)
 
 function GetWeekOfYear(oDate)
 {
-    let oThisThursdayDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
-    oThisThursdayDate.setDate(oThisThursdayDate.getDate() + (4 - (oThisThursdayDate.getDay() || 7)))
+    let oThisWeekDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
+    oThisWeekDate.setDate(oThisWeekDate.getDate() + (4 - (oThisWeekDate.getDay() || 7)))
 
-    let oJan4ThursdayDate = new Date(oThisThursdayDate.getFullYear(), 0, 4)
-    oJan4ThursdayDate.setDate(oJan4ThursdayDate.getDate() + (4 - (oJan4ThursdayDate.getDay() || 7)))
+    let oJan4WeekDate = new Date(oThisWeekDate.getFullYear(), 0, 4)
+    oJan4WeekDate.setDate(oJan4WeekDate.getDate() + (4 - (oJan4WeekDate.getDay() || 7)))
 
-    let nThisThursdayUtcTicks = Date.UTC(oThisThursdayDate.getFullYear(), oThisThursdayDate.getMonth(), oThisThursdayDate.getDate())
-    let nJan4ThursdayUtcTicks = Date.UTC(oJan4ThursdayDate.getFullYear(), oJan4ThursdayDate.getMonth(), oJan4ThursdayDate.getDate())
+    let nThisWeekUtcTicks = Date.UTC(oThisWeekDate.getFullYear(), oThisWeekDate.getMonth(), oThisWeekDate.getDate())
+    let nJan4WeekUtcTicks = Date.UTC(oJan4WeekDate.getFullYear(), oJan4WeekDate.getMonth(), oJan4WeekDate.getDate())
 
-    return ((nThisThursdayUtcTicks - nJan4ThursdayUtcTicks) / (7 * c_nDayTicks)) + 1
+    return ((nThisWeekUtcTicks - nJan4WeekUtcTicks) / (7 * c_nDayTicks)) + 1
 }
 
 function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
