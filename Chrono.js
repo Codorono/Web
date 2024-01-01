@@ -1,6 +1,4 @@
-﻿const c_nDayTicks = 24 * 60 * 60 * 1000
-
-const c_nDailySunTimes =
+﻿const c_nDailySunTimes =
 [
     0x03E501CC, 0x03E601CC, 0x03E701CC, 0x03E801CC, 0x03E901CC, 0x03EA01CC, 0x03EB01CC,
     0x03EC01CC, 0x03ED01CB, 0x03EF01CB, 0x03F001CB, 0x03F101CA, 0x03F201CA, 0x03F301CA,
@@ -213,6 +211,8 @@ const c_nDailySunTimes =
     0x03E101CB, 0x03E201CC, 0x03E301CC, 0x03E401CC, 0x03E501CC
 ]
 
+const c_nDayTicks = 24 * 60 * 60 * 1000
+
 function GetPlural(nNumber)
 {
     return (nNumber === 1) ? "" : "s"
@@ -223,14 +223,30 @@ function GetPlurale(nNumber)
     return (nNumber === 1) ? "" : "es"
 }
 
-function GetDaysInYear(nYear)
+function GetDaysInMonth(nYear, nMonth)
 {
-    if (((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
+    const c_nMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    let nDaysInMonth = c_nMonthDays[nMonth]
+
+    if ((nMonth == 2) && ((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
     {
-        return 366
+        nDaysInMonth = 29
     }
 
-    return 365
+    return nDaysInMonth
+}
+
+function GetDaysInYear(nYear)
+{
+    let nDaysInYear = 365
+
+    if (((nYear & 3) == 0) && (((nYear % 100) != 0) || ((nYear % 400) == 0)))
+    {
+        nDaysInYear = 366
+    }
+
+    return nDaysInYear
 }
 
 function GetDayOfYear(oDate)
@@ -241,20 +257,6 @@ function GetDayOfYear(oDate)
     return ((nThisUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
 }
 
-function GetWeekOfYear(oDate)
-{
-    let oThisThursdayDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
-    oThisThursdayDate.setDate(oThisThursdayDate.getDate() + 4 - (oThisThursdayDate.getDay() || 7))
-
-    let oWeek1ThursdayDate = new Date(oThisThursdayDate.getFullYear(), 0, 4)
-    oWeek1ThursdayDate.setDate(oWeek1ThursdayDate.getDate() + 4 - (oWeek1ThursdayDate.getDay() || 7))
-
-    let nThisThursdayUtcTicks = Date.UTC(oThisThursdayDate.getFullYear(), oThisThursdayDate.getMonth(), oThisThursdayDate.getDate())
-    let nWeek1ThursdayUtcTicks = Date.UTC(oWeek1ThursdayDate.getFullYear(), oWeek1ThursdayDate.getMonth(), oWeek1ThursdayDate.getDate())
-
-    return ((nThisThursdayUtcTicks - nWeek1ThursdayUtcTicks) / (7 * c_nDayTicks)) + 1
-}
-
 function GetPercentOfYear(oDate)
 {
     let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate(), oDate.getHours(), oDate.getMinutes(), oDate.getSeconds(), oDate.getMilliseconds())
@@ -263,6 +265,20 @@ function GetPercentOfYear(oDate)
     let nYearTicks = GetDaysInYear(oDate.getFullYear()) * c_nDayTicks
 
     return Math.floor(((nThisUtcTicks - nJan1UtcTicks) * 100) / nYearTicks)
+}
+
+function GetWeekOfYear(oDate)
+{
+    let oThisThursdayDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
+    oThisThursdayDate.setDate(oThisThursdayDate.getDate() + (4 - (oThisThursdayDate.getDay() || 7)))
+
+    let oJan4ThursdayDate = new Date(oThisThursdayDate.getFullYear(), 0, 4)
+    oJan4ThursdayDate.setDate(oJan4ThursdayDate.getDate() + (4 - (oJan4ThursdayDate.getDay() || 7)))
+
+    let nThisThursdayUtcTicks = Date.UTC(oThisThursdayDate.getFullYear(), oThisThursdayDate.getMonth(), oThisThursdayDate.getDate())
+    let nJan4ThursdayUtcTicks = Date.UTC(oJan4ThursdayDate.getFullYear(), oJan4ThursdayDate.getMonth(), oJan4ThursdayDate.getDate())
+
+    return ((nThisThursdayUtcTicks - nJan4ThursdayUtcTicks) / (7 * c_nDayTicks)) + 1
 }
 
 function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
@@ -296,8 +312,8 @@ function GetChrono()
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
     let nDayOfYear = GetDayOfYear(oNow)
-    let nWeekOfYear = GetWeekOfYear(oNow)
     let nPercentOfYear = GetPercentOfYear(oNow)
+    let nWeekOfYear = GetWeekOfYear(oNow)
 
     let strUserAgent = navigator["userAgent"]
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
@@ -314,15 +330,14 @@ function GetChrono()
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
-    strToday += GetEventDays(oNow, "New Years Day", "is", 2024, 1, 1) + " - "
     strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2024, 1, 15) + " - "
     strToday += GetEventDays(oNow, "Paul's Birthday", "is", 2024, 2, 9) + " - "
     strToday += GetEventDays(oNow, "Valentine's Day", "is", 2024, 2, 14) + " - "
     strToday += GetEventDays(oNow, "President's Day", "is", 2024, 2, 19) + " - "
+    strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2024, 3, 10) + " - "
     strToday += GetEventDays(oNow, "Election Day", "is", 2024, 11, 5)
 
 /*
-    strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2024, 3, 10) + " - "
     strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2024, 3, 17) + " - "
     strToday += GetEventDays(oNow, "Spring Equinox", "is", 2024, 3, 19) + " - "
     strToday += GetEventDays(oNow, "Easter Day", "is", 2024, 3, 31) + " - "
@@ -342,6 +357,7 @@ function GetChrono()
     strToday += GetEventDays(oNow, "Thanksgiving Day", "is", 2024, 11, 28) + " - "
     strToday += GetEventDays(oNow, "Winter Solstice", "is", 2024, 12, 21) + " - "
     strToday += GetEventDays(oNow, "Christmas Day", "is", 2024, 12, 25) + " - "
+    strToday += GetEventDays(oNow, "New Years Day", "is", 2025, 1, 1) + " - "
 */
 
     return strToday
