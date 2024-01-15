@@ -330,15 +330,14 @@ function GetChrono()
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
-    strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2024, 1, 15) + " - "
     strToday += GetEventDays(oNow, "Paul's Birthday", "is", 2024, 2, 9) + " - "
     strToday += GetEventDays(oNow, "Valentine's Day", "is", 2024, 2, 14) + " - "
     strToday += GetEventDays(oNow, "President's Day", "is", 2024, 2, 19) + " - "
     strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2024, 3, 10) + " - "
+    strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2024, 3, 17) + " - "
     strToday += GetEventDays(oNow, "Election Day", "is", 2024, 11, 5)
 
 /*
-    strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2024, 3, 17) + " - "
     strToday += GetEventDays(oNow, "Spring Equinox", "is", 2024, 3, 19) + " - "
     strToday += GetEventDays(oNow, "Easter Day", "is", 2024, 3, 31) + " - "
     strToday += GetEventDays(oNow, "Earth Day", "is", 2024, 4, 22) + " - "
@@ -358,6 +357,7 @@ function GetChrono()
     strToday += GetEventDays(oNow, "Winter Solstice", "is", 2024, 12, 21) + " - "
     strToday += GetEventDays(oNow, "Christmas Day", "is", 2024, 12, 25) + " - "
     strToday += GetEventDays(oNow, "New Years Day", "is", 2025, 1, 1) + " - "
+    strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2025, 1, 20) + " - "
 */
 
     return strToday
