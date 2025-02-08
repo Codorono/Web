@@ -223,13 +223,18 @@ function GetPlurale(nNumber)
     return (nNumber === 1) ? "" : "es"
 }
 
+function IsLeapYear(nYear)
+{
+    return (((nYear & 3) === 0) && (((nYear % 100) !== 0) || ((nYear % 400) === 0)))
+}
+
 function GetDaysInMonth(nYear, nMonth)
 {
     const c_nMonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     let nDaysInMonth = c_nMonthDays[nMonth]
 
-    if ((nMonth === 2) && ((nYear & 3) === 0) && (((nYear % 100) !== 0) || ((nYear % 400) === 0)))
+    if ((nMonth === 1) && IsLeapYear(nYear))
     {
         nDaysInMonth = 29
     }
@@ -239,14 +244,7 @@ function GetDaysInMonth(nYear, nMonth)
 
 function GetDaysInYear(nYear)
 {
-    let nDaysInYear = 365
-
-    if (((nYear & 3) === 0) && (((nYear % 100) !== 0) || ((nYear % 400) === 0)))
-    {
-        nDaysInYear = 366
-    }
-
-    return nDaysInYear
+    return IsLeapYear(nYear) ? 366 : 365
 }
 
 function GetDayOfYear(oDate)
