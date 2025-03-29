@@ -328,8 +328,8 @@ function GetChrono()
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
+    strToday += GetEventDays(oNow, "Easter Day", "is", 2025, 4, 20) + " - "
     strToday += GetEventDays(oNow, "Earth Day", "is", 2025, 4, 22) + " - "
-    strToday += GetEventDays(oNow, "Easter Day", "is", 2025, 4, 25) + " - "
     strToday += GetEventDays(oNow, "Mother's Day", "is", 2025, 5, 11) + " - "
     strToday += GetEventDays(oNow, "Memorial Day", "is", 2025, 5, 26) + " - "
     strToday += GetEventDays(oNow, "Father's Day", "is", 2025, 6, 15) + " - "
