@@ -333,7 +333,8 @@ function GetChrono()
     strToday += GetEventDays(oNow, "Mother's Day", "is", 2025, 5, 11) + " - "
     strToday += GetEventDays(oNow, "Memorial Day", "is", 2025, 5, 26) + " - "
     strToday += GetEventDays(oNow, "Father's Day", "is", 2025, 6, 15) + " - "
-    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2025, 6, 20)
+    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2025, 6, 20) + " - "
+    strToday += GetEventDays(oNow, "Election Day", "is", 2026, 11, 3)
 
 /*
     strToday += GetEventDays(oNow, "Independence Day", "is", 2025, 7, 4)
