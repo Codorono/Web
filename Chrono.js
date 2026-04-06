@@ -328,15 +328,14 @@ function GetChrono()
     strToday += "<b>Week</b> is " + nWeekOfYear + " - "
     strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
-    strToday += GetEventDays(oNow, "Easter Day", "is", 2026, 4, 5) + " - "
     strToday += GetEventDays(oNow, "Earth Day", "is", 2026, 4, 22) + " - "
     strToday += GetEventDays(oNow, "Mother's Day", "is", 2026, 5, 10) + " - "
     strToday += GetEventDays(oNow, "Memorial Day", "is", 2026, 5, 25) + " - "
     strToday += GetEventDays(oNow, "Father's Day", "is", 2026, 6, 21) + " - "
+    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2026, 6, 21) + " - "
     strToday += GetEventDays(oNow, "Election Day", "is", 2026, 11, 3)
 
 /*
-    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2026, 6, 21)
     strToday += GetEventDays(oNow, "Independence Day", "is", 2026, 7, 4)
     strToday += GetEventDays(oNow, "Labor Day", "is", 2026, 9, 7)
     strToday += GetEventDays(oNow, "Autumn Equinox", "is", 2026, 9, 22)
@@ -356,6 +355,7 @@ function GetChrono()
     strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2027, 3, 14)
     strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2027, 3, 17)
     strToday += GetEventDays(oNow, "Spring Equinox", "is", 2027, 3, 20)
+    strToday += GetEventDays(oNow, "Easter Day", "is", 2027, 3, 28)
 */
 
     return strToday
