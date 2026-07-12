@@ -321,7 +321,8 @@ function GetChrono()
         strEdgeVersion = strEdgeVersion.substring(0, strEdgeVersion.length - 6)
     }
 
-    strToday = "<b>Today</b> is " + oNow.toDateString() + " - "
+    let strToday = "<b>Today</b> is " + oNow.toDateString() + " - "
+
     strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
     strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
     strToday += "<b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%) - "
