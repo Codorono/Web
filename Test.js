@@ -79,15 +79,17 @@ function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
 
 function GetChrono()
 {
+    let strToday = "Chrono"
+
     let oNow = new Date()
 
-    let strToday = "<b>Today</b> is " + oNow.toDateString()
+    strToday += " - " + "<b>Today</b> is " + oNow.toDateString()
 
     let strUserAgent = navigator["userAgent"]
 
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
 
-    if (strEdgeVersion === null)
+    if (strEdgeVersion == null)
     {
         strToday += " - " + "Edge Version null"
     }
