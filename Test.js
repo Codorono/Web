@@ -87,7 +87,12 @@ function GetChrono()
 
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
 
-    if (strEdgeVersion != null)
+    if (strEdgeVersion === null)
+    {
+        strToday += " - " + "Edge Version null"
+    }
+
+    else
     {
         if (strEdgeVersion.endsWith(".0.0.0"))
         {
