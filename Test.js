@@ -81,18 +81,21 @@ function GetChrono()
 {
     let oNow = new Date()
 
+    let strToday = "<b>Today</b> is " + oNow.toDateString()
+
     let strUserAgent = navigator["userAgent"]
 
     let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
 
-    if (strEdgeVersion.endsWith(".0.0.0"))
+    if (strEdgeVersion != null)
     {
-        strEdgeVersion = strEdgeVersion.substring(0, strEdgeVersion.length - 6)
+        if (strEdgeVersion.endsWith(".0.0.0"))
+        {
+            strEdgeVersion = strEdgeVersion.substring(0, strEdgeVersion.length - 6)
+        }
+
+        strToday += " - " + "<b>Edge version</b> is " + strEdgeVersion + "<br />"
     }
-
-    let strToday = "<b>Today</b> is " + oNow.toDateString() + " - "
-
-    strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
 
     return strToday
 }
