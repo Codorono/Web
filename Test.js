@@ -89,6 +89,9 @@ function GetChrono()
     {
         let strUserAgent = navigator["userAgent"]
 
+        strToday += " - " + strUserAgent + "<br />"
+
+/*
         let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
 
         if (strEdgeVersion == null)
@@ -105,6 +108,7 @@ function GetChrono()
 
             strToday += " - " + "<b>Edge version</b> is " + strEdgeVersion + "<br />"
         }
+*/
     }
 
     else
