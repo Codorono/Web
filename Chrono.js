@@ -247,41 +247,41 @@ function GetDaysInYear(nYear)
     return IsLeapYear(nYear) ? 366 : 365
 }
 
-function GetDayOfYear(oDate)
+function GetDayOfYear(objDate)
 {
-    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
-    let nJan1UtcTicks = Date.UTC(oDate.getFullYear(), 0, 1)
+    let nThisUtcTicks = Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate())
+    let nJan1UtcTicks = Date.UTC(objDate.getFullYear(), 0, 1)
 
     return ((nThisUtcTicks - nJan1UtcTicks) / c_nDayTicks) + 1
 }
 
-function GetPercentOfYear(oDate)
+function GetPercentOfYear(objDate)
 {
-    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate(), oDate.getHours(), oDate.getMinutes(), oDate.getSeconds(), oDate.getMilliseconds())
-    let nJan1UtcTicks = Date.UTC(oDate.getFullYear(), 0, 1)
+    let nThisUtcTicks = Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate(), objDate.getHours(), objDate.getMinutes(), objDate.getSeconds(), objDate.getMilliseconds())
+    let nJan1UtcTicks = Date.UTC(objDate.getFullYear(), 0, 1)
 
-    let nYearTicks = GetDaysInYear(oDate.getFullYear()) * c_nDayTicks
+    let nYearTicks = GetDaysInYear(objDate.getFullYear()) * c_nDayTicks
 
     return Math.floor(((nThisUtcTicks - nJan1UtcTicks) * 100) / nYearTicks)
 }
 
-function GetWeekOfYear(oDate)
+function GetWeekOfYear(objDate)
 {
-    let oThisWeekDate = new Date(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
-    oThisWeekDate.setDate(oThisWeekDate.getDate() + (4 - (oThisWeekDate.getDay() || 7)))
+    let objThisWeekDate = new Date(objDate.getFullYear(), objDate.getMonth(), objDate.getDate())
+    objThisWeekDate.setDate(objThisWeekDate.getDate() + (4 - (objThisWeekDate.getDay() || 7)))
 
-    let oJan4WeekDate = new Date(oThisWeekDate.getFullYear(), 0, 4)
-    oJan4WeekDate.setDate(oJan4WeekDate.getDate() + (4 - (oJan4WeekDate.getDay() || 7)))
+    let objJan4WeekDate = new Date(objThisWeekDate.getFullYear(), 0, 4)
+    objJan4WeekDate.setDate(objJan4WeekDate.getDate() + (4 - (objJan4WeekDate.getDay() || 7)))
 
-    let nThisWeekUtcTicks = Date.UTC(oThisWeekDate.getFullYear(), oThisWeekDate.getMonth(), oThisWeekDate.getDate())
-    let nJan4WeekUtcTicks = Date.UTC(oJan4WeekDate.getFullYear(), oJan4WeekDate.getMonth(), oJan4WeekDate.getDate())
+    let nThisWeekUtcTicks = Date.UTC(objThisWeekDate.getFullYear(), objThisWeekDate.getMonth(), objThisWeekDate.getDate())
+    let nJan4WeekUtcTicks = Date.UTC(objJan4WeekDate.getFullYear(), objJan4WeekDate.getMonth(), objJan4WeekDate.getDate())
 
     return ((nThisWeekUtcTicks - nJan4WeekUtcTicks) / (7 * c_nDayTicks)) + 1
 }
 
-function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
+function GetEventDays(objDate, strEvent, strVerb, nYear, nMonth, nDay)
 {
-    let nThisUtcTicks = Date.UTC(oDate.getFullYear(), oDate.getMonth(), oDate.getDate())
+    let nThisUtcTicks = Date.UTC(objDate.getFullYear(), objDate.getMonth(), objDate.getDate())
     let nEventUtcTicks = Date.UTC(nYear, nMonth - 1, nDay)
 
     let nEventDiffDays = ((nEventUtcTicks - nThisUtcTicks) / c_nDayTicks)
@@ -291,9 +291,11 @@ function GetEventDays(oDate, strEvent, strVerb, nYear, nMonth, nDay)
 
 function GetChrono()
 {
-    let oNow = new Date()
+    let objNow = new Date()
 
-    let nTodayUtcTicks = Date.UTC(oNow.getFullYear(), oNow.getMonth(), oNow.getDate())
+    let strToday = "<b>Today</b> is " + objNow.toDateString()
+
+    let nTodayUtcTicks = Date.UTC(objNow.getFullYear(), objNow.getMonth(), objNow.getDate())
     let nSunTableUtcTicks = Date.UTC(2024, 0, 1)
 
     let nSunTableIndex = ((nTodayUtcTicks - nSunTableUtcTicks) / c_nDayTicks) % 1461
@@ -301,62 +303,65 @@ function GetChrono()
     let nTodaySunTimes = c_nDailySunTimes[nSunTableIndex]
 
     let nSunriseTime = nTodaySunTimes & 0x0000FFFF
-    let nSunsetTime = nTodaySunTimes >>> 16
 
     let nSunriseMinute = nSunriseTime % 60
     let nSunriseHour = (nSunriseTime - nSunriseMinute) / 60
 
+    strToday += " - <b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM"
+
+    let nSunsetTime = nTodaySunTimes >>> 16
+
     let nSunsetMinute = nSunsetTime % 60
     let nSunsetHour = ((nSunsetTime - nSunsetMinute) / 60) - 12
 
-    let nDayOfYear = GetDayOfYear(oNow)
-    let nPercentOfYear = GetPercentOfYear(oNow)
-    let nWeekOfYear = GetWeekOfYear(oNow)
+    strToday += " - <b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM"
+
+    let nDayOfYear = GetDayOfYear(objNow)
+    let nPercentOfYear = GetPercentOfYear(objNow)
+
+    strToday += " - <b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%)"
+
+    let nWeekOfYear = GetWeekOfYear(objNow)
+
+    strToday += " - <b>Week</b> is " + nWeekOfYear
 
     let strUserAgent = navigator["userAgent"]
-    let strEdgeVersion = strUserAgent.match(/Edg\/((?:\d+\.){3}\d+)/)[1]
+    
+    let objMatch = strUserAgent.match(/Chrome\/(\d+)/)
 
-    if (strEdgeVersion.endsWith(".0.0.0"))
+    if (objMatch !== null)
     {
-        strEdgeVersion = strEdgeVersion.substring(0, strEdgeVersion.length - 6)
+        strToday += " - <b>Chrome version</b> is " + objMatch[1] + "<br />"
     }
 
-    let strToday = "<b>Today</b> is " + oNow.toDateString() + " - "
-
-    strToday += "<b>Sunrise</b> is at " + nSunriseHour + ":" + nSunriseMinute.toString().padStart(2, "0") + " AM - "
-    strToday += "<b>Sunset</b> is at " + nSunsetHour + ":" + nSunsetMinute.toString().padStart(2, "0") + " PM - "
-    strToday += "<b>Day</b> is " + nDayOfYear + " (" + nPercentOfYear + "%) - "
-    strToday += "<b>Week</b> is " + nWeekOfYear + " - "
-    strToday += "<b>Edge version</b> is " + strEdgeVersion + "<br />"
-
-    strToday += GetEventDays(oNow, "Labor Day", "is", 2026, 9, 7) + " - "
-    strToday += GetEventDays(oNow, "Autumn Equinox", "is", 2026, 9, 22) + " - "
-    strToday += GetEventDays(oNow, "Indigenous Peoples Day", "is", 2026, 10, 12) + " - "
-    strToday += GetEventDays(oNow, "Halloween", "is", 2026, 10, 31) + " - "
-    strToday += GetEventDays(oNow, "Daylight Saving Time", "ends", 2026, 11, 1) + " - "
-    strToday += GetEventDays(oNow, "Election Day", "is", 2026, 11, 3)
+    strToday += GetEventDays(objNow, "Labor Day", "is", 2026, 9, 7)
+    strToday += " - " + GetEventDays(objNow, "Autumn Equinox", "is", 2026, 9, 22)
+    strToday += " - " + GetEventDays(objNow, "Indigenous Peoples Day", "is", 2026, 10, 12)
+    strToday += " - " + GetEventDays(objNow, "Halloween", "is", 2026, 10, 31)
+    strToday += " - " + GetEventDays(objNow, "Daylight Saving Time", "ends", 2026, 11, 1)
+    strToday += " - " + GetEventDays(objNow, "Election Day", "is", 2026, 11, 3)
 
 /*
-    strToday += GetEventDays(oNow, "Election Day", "is", 2026, 11, 3)
-    strToday += GetEventDays(oNow, "Veteran's Day", "is", 2026, 11, 11)
-    strToday += GetEventDays(oNow, "Thanksgiving Day", "is", 2026, 11, 26)
-    strToday += GetEventDays(oNow, "Winter Solstice", "is", 2026, 12, 21)
-    strToday += GetEventDays(oNow, "Christmas Day", "is", 2026, 12, 25)
-    strToday += GetEventDays(oNow, "New Years Day", "is", 2027, 1, 1)
-    strToday += GetEventDays(oNow, "Martin Luther King Jr. Day", "is", 2027, 1, 18)
-    strToday += GetEventDays(oNow, "Paul's Birthday", "is", 2027, 2, 9)
-    strToday += GetEventDays(oNow, "Valentine's Day", "is", 2027, 2, 14)
-    strToday += GetEventDays(oNow, "Presidents' Day", "is", 2027, 2, 15)
-    strToday += GetEventDays(oNow, "Daylight Saving Time", "starts", 2027, 3, 14)
-    strToday += GetEventDays(oNow, "St. Patrick's Day", "is", 2027, 3, 17)
-    strToday += GetEventDays(oNow, "Spring Equinox", "is", 2027, 3, 20)
-    strToday += GetEventDays(oNow, "Easter Day", "is", 2027, 3, 28)
-    strToday += GetEventDays(oNow, "Earth Day", "is", 2027, 4, 22)
-    strToday += GetEventDays(oNow, "Mother's Day", "is", 2027, 5, 9)
-    strToday += GetEventDays(oNow, "Memorial Day", "is", 2027, 5, 31)
-    strToday += GetEventDays(oNow, "Father's Day", "is", 2027, 6, 20)
-    strToday += GetEventDays(oNow, "Summer Solstice", "is", 2027, 6, 21)
-    strToday += GetEventDays(oNow, "Independence Day", "is", 2027, 7, 4)
+    strToday += GetEventDays(objNow, "Election Day", "is", 2026, 11, 3)
+    strToday += GetEventDays(objNow, "Veteran's Day", "is", 2026, 11, 11)
+    strToday += GetEventDays(objNow, "Thanksgiving Day", "is", 2026, 11, 26)
+    strToday += GetEventDays(objNow, "Winter Solstice", "is", 2026, 12, 21)
+    strToday += GetEventDays(objNow, "Christmas Day", "is", 2026, 12, 25)
+    strToday += GetEventDays(objNow, "New Years Day", "is", 2027, 1, 1)
+    strToday += GetEventDays(objNow, "Martin Luther King Jr. Day", "is", 2027, 1, 18)
+    strToday += GetEventDays(objNow, "Paul's Birthday", "is", 2027, 2, 9)
+    strToday += GetEventDays(objNow, "Valentine's Day", "is", 2027, 2, 14)
+    strToday += GetEventDays(objNow, "Presidents' Day", "is", 2027, 2, 15)
+    strToday += GetEventDays(objNow, "Daylight Saving Time", "starts", 2027, 3, 14)
+    strToday += GetEventDays(objNow, "St. Patrick's Day", "is", 2027, 3, 17)
+    strToday += GetEventDays(objNow, "Spring Equinox", "is", 2027, 3, 20)
+    strToday += GetEventDays(objNow, "Easter Day", "is", 2027, 3, 28)
+    strToday += GetEventDays(objNow, "Earth Day", "is", 2027, 4, 22)
+    strToday += GetEventDays(objNow, "Mother's Day", "is", 2027, 5, 9)
+    strToday += GetEventDays(objNow, "Memorial Day", "is", 2027, 5, 31)
+    strToday += GetEventDays(objNow, "Father's Day", "is", 2027, 6, 20)
+    strToday += GetEventDays(objNow, "Summer Solstice", "is", 2027, 6, 21)
+    strToday += GetEventDays(objNow, "Independence Day", "is", 2027, 7, 4)
 */
 
     return strToday
