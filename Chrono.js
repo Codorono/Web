@@ -334,15 +334,14 @@ function GetChrono()
         strToday += " - <b>Chrome version</b> is " + objMatch[1] + "<br />"
     }
 
-    strToday += GetEventDays(objNow, "Autumn Equinox", "is", 2026, 9, 22)
-    strToday += " - " + GetEventDays(objNow, "Indigenous Peoples Day", "is", 2026, 10, 12)
+    strToday += GetEventDays(objNow, "Indigenous Peoples Day", "is", 2026, 10, 12)
     strToday += " - " + GetEventDays(objNow, "Halloween", "is", 2026, 10, 31)
     strToday += " - " + GetEventDays(objNow, "Daylight Saving Time", "ends", 2026, 11, 1)
     strToday += " - " + GetEventDays(objNow, "Election Day", "is", 2026, 11, 3)
     strToday += " - " + GetEventDays(objNow, "Veteran's Day", "is", 2026, 11, 11)
+    strToday += " - " + GetEventDays(objNow, "Thanksgiving Day", "is", 2026, 11, 26)
 
 /*
-    strToday += " - " + GetEventDays(objNow, "Thanksgiving Day", "is", 2026, 11, 26)
     strToday += " - " + GetEventDays(objNow, "Winter Solstice", "is", 2026, 12, 21)
     strToday += " - " + GetEventDays(objNow, "Christmas Day", "is", 2026, 12, 25)
     strToday += " - " + GetEventDays(objNow, "New Years Day", "is", 2027, 1, 1)
@@ -361,6 +360,7 @@ function GetChrono()
     strToday += " - " + GetEventDays(objNow, "Summer Solstice", "is", 2027, 6, 21)
     strToday += " - " + GetEventDays(objNow, "Independence Day", "is", 2027, 7, 4)
     strToday += " - " + GetEventDays(objNow, "Labor Day", "is", 2027, 9, 6)
+    strToday += " - " + GetEventDays(objNow, "Autumn Equinox", "is", 2027, 9, 22)
 */
 
     return strToday
